@@ -96,9 +96,9 @@ class MUserController extends Controller
 
     public function ajaxData(Request $request)
     {
-        $results = DB::table('users as u')
+        $results = DB::table('users AS u')
             ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status")
-            ->join('status_user as s', 'u.status', '=', 's.id')
+            ->join('status_user AS s', 'u.status', '=', 's.id')
             ->orderBy('u.id', 'ASC');
         if ($request->ajax()) {
             return Datatables::of($results)
