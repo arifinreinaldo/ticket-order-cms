@@ -32,8 +32,11 @@ Route::group([
 
     Route::get('/muser', 'MUserController@webIndex')->name('muser');
     Route::get('/muser/create', 'MUserController@webCreate');
+    Route::get('/muser/edit/{id}', 'MUserController@webEdit');
+    Route::post('/muser/update', 'MUserController@webUpdate');
     Route::post('/muser/store', 'MUserController@webStore');
-    Route::post('/muser/update/{id}', 'MUserController@webUpdate');
-    Route::post('/muser/destroy/{id}', 'MUserController@webDestroy');
+    Route::post('/muser/toggle', 'MUserController@webToggle');
     Route::get('/ajaxmuser', 'MuserController@ajaxData')->name('/ajaxmuser');
+
+    Route::post('/muser/destroy/{id}', 'MUserController@webDestroy');
 });
