@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\{{modelName}}Request;
+use App\{{modelName}};
+use DataTables;
+
+class {{modelName}}Controller extends Controller
+{
+    public function index()
+    {
+        ${{modelNamePluralLowerCase}} = {{modelName}}::latest()->get();
+
+        return response()->json(${{modelNamePluralLowerCase}});
+    }
+
+    public function store({{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+
+        return response()->json(${{modelNameSingularLowerCase}}, 201);
+    }
+
+    public function show($id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+
+        return response()->json(${{modelNameSingularLowerCase}});
+    }
+
+    public function update({{modelName}}Request $request, $id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+        ${{modelNameSingularLowerCase}}->update($request->all());
+
+        return response()->json(${{modelNameSingularLowerCase}}, 200);
+    }
+
+    public function destroy($id)
+    {
+        {{modelName}}::destroy($id);
+
+        return response()->json(null, 204);
+    }
+
+    //web function
+    public function webIndex()
+    {
+        $user = auth()->user();
+        ${{modelNamePluralLowerCase}} = {{modelName}}::where('id', '>', '0')->paginate(10);
+        return view('master.{{modelNameSingularLowerCase}}', compact('{{modelNamePluralLowerCase}}','user'));
+    }
+
+    public function webStore({{modelName}}Request $request)
+    {
+        $data = request()->validate([
+
+        ]);
+
+        try{
+            ${{modelNamePluralLowerCase}} = {{modelName}}::create($request->all());
+        }catch(Exception $e){
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed','Failed insert data.');
+        }
+        return redirect("/{{modelNameSingularLowerCase}}")->with('success','Success insert data.');
+    }
+
+    public function webShow($id)
+    {
+
+        ${{modelNamePluralLowerCase}} = {{modelName}}::findOrFail($id);
+
+        return response()->json(${{modelNamePluralLowerCase}});
+    }
+
+    public function webUpdate({{modelName}}Request $request, $id)
+    {
+        $data = request()->validate([
+
+        ]);
+
+        try{
+            ${{modelNamePluralLowerCase}} = {{modelName}}::findOrFail($id);
+            ${{modelNamePluralLowerCase}}->update($request->all());
+        }catch(Exception $e){
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed','Failed update data.');
+        }
+        return redirect("/{{modelNameSingularLowerCase}}")->with('success','Success update data.');
+    }
+
+    public function webDestroy($id)
+    {
+        try{
+            {{modelName}}::destroy($id);
+        }catch(Exception $e){
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed','Failed delete data.');
+        }
+        return redirect("/{{modelNameSingularLowerCase}}")->with('success','Success delete data.');
+    }
+}
