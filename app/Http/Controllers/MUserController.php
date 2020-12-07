@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MUserRequest;
+use App\MRole;
 use App\MUser;
 use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,14 +21,16 @@ class MUserController extends Controller
 
     public function webCreate()
     {
-        return view('master.muser_create');
+        $mrole = MRole::where('status', '=', '1')->get();
+        return view('master.muser_create', compact('mrole'));
     }
 
     public function webEdit($id)
     {
         try {
+            $mrole = MRole::where('status', '=', '1')->get();
             $muser = MUser::findOrFail($id);
-            return view('master.muser_create', compact('muser'));
+            return view('master.muser_create', compact('muser', 'mrole'));
         } catch (ModelNotFoundException $ex) {
             return redirect("/muser")->with('failed', 'Data Not found');
         }
@@ -39,9 +42,9 @@ class MUserController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'email' => 'required | email | unique:users',
-            'password' => 'required| min:7 | confirmed'
+            'password' => 'required| min:7 | confirmed',
+            'role' => 'required',
         ]);
-        $data['role'] = '1';
         $data['status'] = '1';
         $data['username'] = $data['name'];
         $data['password'] = bcrypt($data['password']);
@@ -66,7 +69,8 @@ class MUserController extends Controller
             'id' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'password' => 'nullable|confirmed|min:7'
+            'password' => 'nullable|confirmed|min:7',
+            'role' => 'required',
         ]);
 
         try {
@@ -77,6 +81,7 @@ class MUserController extends Controller
             if ($data['password'] != "") {
                 $musers->password = bcrypt($data['password']);
             }
+            $musers->role = $data['role'];
             $musers->save();
         } catch (Exception $e) {
             return redirect("/muser")->with('failed', 'Failed update data.');
@@ -97,8 +102,9 @@ class MUserController extends Controller
     public function ajaxData(Request $request)
     {
         $results = DB::table('users AS u')
-            ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status")
-            ->join('status_user AS s', 'u.status', '=', 's.id')
+            ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status,ur.role_name")
+            ->join('status AS s', 'u.status', '=', 's.id')
+            ->join('user_role AS ur', 'u.role', '=', 'ur.id')
             ->orderBy('u.id', 'ASC');
         if ($request->ajax()) {
             return Datatables::of($results)

@@ -19,7 +19,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{url('/muser/create')}}">
+                <a href="{{url('/mrole/create')}}">
                     <button type="button" class="btn btn-primary" title="">Create</button>
                 </a>
             </div>
@@ -51,9 +51,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User ID</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th>Role Name</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -75,28 +73,26 @@
             $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('/ajaxmuser')}}",
+                ajax: "{{route('/ajaxmrole')}}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'name', name: 'u.name'},
-                    {data: 'email', name: 'u.email'},
-                    {data: 'role_name', name: 'ur.role_name'},
+                    {data: 'role_name', name: 'u.role_name'},
                     {data: 'status_name', name: 's.name'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ], columnDefs: [
-                    {width: '10%', targets: 5}
+                    {width: '10%', targets: 3}
                 ],
             });
         });
         $(document).on("click", ".btn-activate", function () {
             var userid = $(this).attr('userid');
             $('#userid_param').val(userid);
-            $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
+            $('#actionForm').attr('action', '{{url('/mrole/toggle')}}');
             $('#actionForm').submit();
         });
         $(document).on("click", ".btn-edit", function () {
             var userid = $(this).attr('userid');
-            window.location.href = '/muser/edit/' + userid;
+            window.location.href = '/mrole/edit/' + userid;
         });
     </script>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusUserTable extends Migration
+class CreateUserRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateStatusUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('status', function (Blueprint $table) {
+        Schema::create('user_role', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('role_name');
+            $table->integer('status');
             $table->timestamps();
         });
-        DB::table('status')->insert(
+        DB::table('user_role')->insert(
             array(
-                'name' => 'Active'
-            )
-        );
-        DB::table('status')->insert(
-            array(
-                'name' => 'Inactive'
+                'role_name' => 'Super Admin',
+                'status' => 1,
             )
         );
     }
@@ -37,6 +34,6 @@ class CreateStatusUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_user');
+        Schema::dropIfExists('user_role');
     }
 }

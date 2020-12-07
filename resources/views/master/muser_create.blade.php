@@ -80,6 +80,24 @@
                             <input type="password" class="form-control" name="password_confirmation">
                         </div>
                         <div class="form-group">
+                            <label>Role</label>
+                            <select class="form-control selectpicker"
+                                    id="role"
+                                    name="role"
+                                    data-live-search="true">
+                                <option value="">Select Role</option>
+                                @foreach($mrole as $data)
+                                    <option value="{{$data->id}}">{{$data->role_name}}</option>
+                                @endforeach
+                                @if(empty($muser))
+                                    @php($user_role= '')
+                                @else
+                                    @php($user_role = $muser->role)
+                                @endif
+                                <input type="hidden" id="role_value" value="{{$user_role}}">
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         @if (!empty($muser))
@@ -91,6 +109,9 @@
         </div>
     </div>
     <script>
+        $(document).ready(function () {
+            $('#role').val($('#role_value').val());
+        });
     </script>
 @endsection
 

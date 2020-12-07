@@ -37,6 +37,14 @@ Route::group([
     Route::post('/muser/store', 'MUserController@webStore');
     Route::post('/muser/toggle', 'MUserController@webToggle');
     Route::get('/ajaxmuser', 'MuserController@ajaxData')->name('/ajaxmuser');
-
     Route::post('/muser/destroy/{id}', 'MUserController@webDestroy');
+
+    Route::get('/mrole', 'MRoleController@webIndex')->name('mrole');
+    Route::get('/mrole/create', 'MRoleController@webCreate');
+    Route::get('/mrole/edit/{id}', 'MRoleController@webEdit');
+    Route::post('/mrole/update', 'MRoleController@webUpdate');
+    Route::post('/mrole/store', 'MRoleController@webStore');
+    Route::post('/mrole/toggle', 'MRoleController@webToggle');
+    Route::get('/ajaxmrole', 'MRoleController@ajaxData')->name('/ajaxmrole');
 });
+Route::get('/mmenurole','MMenuRoleController@webIndex')->name('mmenurole');Route::post('/mmenurole/store','MMenuRoleController@webStore');Route::post('/mmenurole/update/{id}','MMenuRoleController@webUpdate');Route::post('/mmenurole/destroy/{id}','MMenuRoleController@webDestroy');

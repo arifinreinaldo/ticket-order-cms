@@ -47,101 +47,101 @@
                     <li class="nav-item pcoded-menu-caption">
                         <label>User Management</label>
                     </li>
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item {{ (request()->is('muser*')) ? 'active' : '' }}">
                         <a href="{{url('/muser')}}" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span class="pcoded-mtext">User Admin Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
+                    <li data-username="t" class="nav-item {{ (request()->is('mrole*')) ? 'active' : '' }}">
+                        <a href="{{url('/mrole')}}" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">User Role Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Customer Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Theme Park Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Theme Park Branch Management</span></a>
                     </li>
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Game Center Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Product Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Promotion Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Event Calendar Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Banner Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Article Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Static Page Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Point Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Email Template Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Report Management</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Configuration</span></a>
                     </li>
 
-                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <li data-username="t" class="nav-item">
                         <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span
                                 class="pcoded-mtext">Activity & Error Log</span></a>
