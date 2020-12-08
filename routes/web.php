@@ -29,6 +29,11 @@ Route::group([
     'middleware' => ['auth']
 ], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/noauth', 'HomeController@noauth')->name('noauth');
+});
+Route::group([
+    'middleware' => ['auth', 'rolecheck']
+], function () {
 
     Route::get('/muser', 'MUserController@webIndex')->name('muser');
     Route::get('/muser/create', 'MUserController@webCreate');
@@ -47,4 +52,7 @@ Route::group([
     Route::post('/mrole/toggle', 'MRoleController@webToggle');
     Route::get('/ajaxmrole', 'MRoleController@ajaxData')->name('/ajaxmrole');
 });
-Route::get('/mmenurole','MMenuRoleController@webIndex')->name('mmenurole');Route::post('/mmenurole/store','MMenuRoleController@webStore');Route::post('/mmenurole/update/{id}','MMenuRoleController@webUpdate');Route::post('/mmenurole/destroy/{id}','MMenuRoleController@webDestroy');
+//Route::get('/mmenurole', 'MMenuRoleController@webIndex')->name('mmenurole');
+//Route::post('/mmenurole/store', 'MMenuRoleController@webStore');
+//Route::post('/mmenurole/update/{id}', 'MMenuRoleController@webUpdate');
+//Route::post('/mmenurole/destroy/{id}', 'MMenuRoleController@webDestroy');
