@@ -47,105 +47,155 @@
                     <li class="nav-item pcoded-menu-caption">
                         <label>User Management</label>
                     </li>
-                    <li data-username="t" class="nav-item {{ (request()->is('muser*')) ? 'active' : '' }}">
-                        <a href="{{url('/muser')}}" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span class="pcoded-mtext">User Admin Management</span></a>
-                    </li>
+                    @foreach (session('menu') as $menu)
+                        @if($menu->read_access=='X')
+                            <li data-username="t"
+                                class="nav-item {{ (request()->is($menu->alias.'*')) ? 'active' : '' }}">
+                                <a href="{{url('/'.$menu->alias)}}" class="nav-link ">
+                                    <span class="pcoded-mtext">{{$menu->menu}}</span>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
 
-                    <li data-username="t" class="nav-item {{ (request()->is('mrole*')) ? 'active' : '' }}">
-                        <a href="{{url('/mrole')}}" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">User Role Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
+                    {{--                        <li data-username="t" class="nav-item {{ (request()->is('mrole*')) ? 'active' : '' }}">--}}
+                    {{--                            <a href="{{url('/mrole')}}" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">User Role Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Customer Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Customer Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Theme Park Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Theme Park Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Theme Park Branch Management</span></a>
-                    </li>
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Game Center Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Product Management</span></a>
-                    </li>
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Theme Park Branch Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Promotion Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Game Center Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Event Calendar Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Banner Management</span></a>
-                    </li>
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Product Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Article Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Static Page Management</span></a>
-                    </li>
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Promotion Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Point Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Email Template Management</span></a>
-                    </li>
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Event Calendar Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Report Management</span></a>
-                    </li>
+                    {{--                    @if(session('menu_2')=='X')--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Configuration</span></a>
-                    </li>
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Banner Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
 
-                    <li data-username="t" class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home"></i></span><span
-                                class="pcoded-mtext">Activity & Error Log</span></a>
-                    </li>
+                    {{--                    @if(session('menu_10')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Article Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_11')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Static Page Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_12')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Point Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_13')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Email Template Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_14')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Report Management</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_15')=='X')--}}
+
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Configuration</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
+
+                    {{--                    @if(session('menu_16')=='X')--}}
+                    {{--                        <li data-username="t" class="nav-item">--}}
+                    {{--                            <a href="index.html" class="nav-link "><span class="pcoded-micon"><i--}}
+                    {{--                                        class="feather icon-home"></i></span><span--}}
+                    {{--                                    class="pcoded-mtext">Activity & Error Log</span></a>--}}
+                    {{--                        </li>--}}
+                    {{--                    @endif--}}
                     {{--                    <li class="nav-item pcoded-menu-caption">--}}
                     {{--                        <label>UI Element</label>--}}
                     {{--                    </li>--}}
@@ -263,7 +313,7 @@
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
                                 <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
-
+                                {{Auth::user()->name}}
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
@@ -272,14 +322,9 @@
                                 </a>
                             </div>
                             <ul class="pro-body">
-                                <li><a href="javascript:" class="dropdown-item"><i class="feather icon-settings"></i>
-                                        Settings</a></li>
-                                <li><a href="javascript:" class="dropdown-item"><i class="feather icon-user"></i>
-                                        Profile</a></li>
-                                <li><a href="message.html" class="dropdown-item"><i class="feather icon-mail"></i> My
-                                        Messages</a></li>
-                                <li><a href="auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i>
-                                        Lock Screen</a></li>
+                                <li><a href="{{ route('logout') }}" class="dropdown-item"><i
+                                            class="feather icon-lock"></i>
+                                        Log Out</a></li>
                             </ul>
                         </div>
                     </div>
