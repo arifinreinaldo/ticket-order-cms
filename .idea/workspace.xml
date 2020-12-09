@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RoleCheck.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleCheck.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/muser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/muser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +190,10 @@
       <workItem from="1607341533316" duration="521000" />
       <workItem from="1607394898116" duration="1931000" />
       <workItem from="1607396960352" duration="2077000" />
-      <workItem from="1607399283581" duration="85000" />
+      <workItem from="1607399283581" duration="139000" />
+      <workItem from="1607405612945" duration="102000" />
+      <workItem from="1607432769038" duration="2288000" />
+      <workItem from="1607494070187" duration="7300000" />
     </task>
     <servers />
   </component>
@@ -219,10 +229,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="341" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1607398638171" />
-    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1607396324328">
+    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1607499357394">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1607396324328" />
+    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1607499357394" />
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607050224630">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -231,9 +241,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607398768841" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607399314770">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607501732472">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607399314770" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607501732472" />
   </component>
 </project>

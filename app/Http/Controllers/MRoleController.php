@@ -172,7 +172,6 @@ class MRoleController extends Controller
         } catch (\Exception $e) {
             return redirect("/mrole")->with('failed', 'Failed update role data.');
         }
-        return redirect("/mrole")->with('success', 'Success update role data.');
     }
 
     public function webDestroy($id)
@@ -194,6 +193,10 @@ class MRoleController extends Controller
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
+                ->editColumn("role_name", function ($row) {
+                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->role_name</span>";
+                })
+                ->escapeColumns('role_name')
                 ->addColumn("action", function ($row) {
                     $btn = "";
                     $btn .= "<button class='btn btn-success btn-edit' title='Edit User' userid='$row->id'>

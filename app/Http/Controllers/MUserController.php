@@ -89,16 +89,6 @@ class MUserController extends Controller
         return redirect("/muser")->with('success', 'Success update data.');
     }
 
-    public function webDestroy($id)
-    {
-        try {
-            MUser::destroy($id);
-        } catch (Exception $e) {
-            return redirect("/muser")->with('failed', 'Failed delete data.');
-        }
-        return redirect("/muser")->with('success', 'Success delete data.');
-    }
-
     public function ajaxData(Request $request)
     {
         $results = DB::table('users AS u')
@@ -109,6 +99,26 @@ class MUserController extends Controller
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
+                ->addColumn("checkbox", function ($row) {
+                    $btn = "";
+                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
+                    return $btn;
+                })
+                ->escapeColumns('checkbox')
+//                ->editColumn("status_name", function ($row) {
+//                    $btn = "";
+//                    if ($row->status == '1') {
+//                        $btn .= "<a class='label theme-bg2 text-white f-12'>Active</a>";
+//                    } else {
+//                        $btn .= "<a class='label theme-bg text-white f-12'>Inactive</a>";
+//                    }
+//                    return $btn;
+//                })
+//                ->escapeColumns('status_name')
+                ->editColumn("name", function ($row) {
+                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->name</span>";
+                })
+                ->escapeColumns('name')
                 ->addColumn("action", function ($row) {
                     $btn = "";
                     $btn .= "<button class='btn btn-success btn-edit' title='Edit User' userid='$row->id'>
@@ -135,21 +145,51 @@ class MUserController extends Controller
         $data = request()->validate([
             'userid' => 'required'
         ]);
-        try {
-            $message = 'activated';
-            $muser = MUser::findOrFail($data['userid']);
-            if ($muser->status == '1') {
-                $muser->status = '2';
-                $message = 'deactivated';
-            } else if ($muser->status == '2') {
-                $muser->status = '1';
+        if ($request['state'] == null) {
+            try {
+                $message = 'activated';
+                $muser = MUser::findOrFail($data['userid']);
+                if ($muser->status == '1') {
+                    $muser->status = '2';
+                    $message = 'deactivated';
+                } else if ($muser->status == '2') {
+                    $muser->status = '1';
+                }
+                $muser->save();
+                return redirect("/muser")->with('success', 'User has been ' . $message);
+            } catch (ModelNotFoundException $ex) {
+                return redirect("/muser")->with('failed', 'Data Not found');
+            } catch (Exception$ex) {
+                dd($ex);
             }
-            $muser->save();
-            return redirect("/muser")->with('success', 'User has been ' . $message);
-        } catch (ModelNotFoundException $ex) {
-            return redirect("/muser")->with('failed', 'Data Not found');
-        } catch (Exception$ex) {
-            dd($ex);
+        } else {
+            $ids = explode(",", $data['userid']);
+            try {
+                $rst = MUser::whereIn('id', $ids)->update(['status' => $request['state']]);
+                if ($request['state'] == '1') {
+                    return redirect("/muser")->with('success', 'User(s) has been activated');
+                } else if ($request['state'] == '2') {
+                    return redirect("/muser")->with('success', 'User(s) has been deactivated');
+                }
+
+            } catch (\Exception $exception) {
+                return redirect("/muser")->with('failed', 'Failed to update user(s)');
+            }
+        }
+    }
+
+    public function webDestroy(Request $request)
+    {
+        $data = request()->validate([
+            'userid' => 'required'
+        ]);
+        $ids = explode(",", $data['userid']);
+        try {
+            $rst = MUser::whereIn('id', $ids)->delete();
+            return redirect("/muser")->with('success', 'User(s) has been deleted');
+
+        } catch (\Exception $exception) {
+            return redirect("/muser")->with('failed', 'Failed to delete user(s)');
         }
     }
 }

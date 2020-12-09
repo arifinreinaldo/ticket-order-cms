@@ -31,9 +31,9 @@ class RoleCheck
                         return $next($request);
                     } else if (count($data) > 1) {
                         $action = $data[1];
-                        if ($action == 'create' && $access->create_access == 'X') {
+                        if (($action == 'create' || $action == 'store') && $access->create_access == 'X') {
                             return $next($request);
-                        } else if ($action == 'edit' && $access->update_access == 'X') {
+                        } else if (($action == 'edit' || $action == 'toggle'|| $action == 'update') && $access->update_access == 'X') {
                             return $next($request);
                         } else if ($action == 'destroy' && $access->delete_access == 'X') {
                             return $next($request);

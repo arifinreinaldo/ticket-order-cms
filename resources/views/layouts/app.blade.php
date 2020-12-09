@@ -359,6 +359,11 @@
                 <!-- [ breadcrumb ] end -->
                     <div class="main-body">
                         <div class="page-wrapper">
+                            <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span id="contentMessage"></span>
+                                <button type="button" class="close" id="closeMessage"><span
+                                        aria-hidden="true">×</span></button>
+                            </div>
                             <main class="py-4">
                                 @yield('content')
                             </main>
@@ -369,6 +374,28 @@
         </div>
     </div>
 
+    <div class="card">
+        <div class="card-body">
+            <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="titleModal"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body" id="contentModal">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" id="confirmButtonModal">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <form id="logout-form" action="{{ route('logout') }}" method="POST"
           style="display: none;">
         @csrf
@@ -376,6 +403,30 @@
     <script src="{{url('assets/js/vendor-all.min.js')}}"></script>
     <script src="{{url('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{url('assets/js/pcoded.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#errorMessage').hide();
+            $('#closeMessage').click(function () {
+                $('#errorMessage').fadeOut();
+            })
+        });
+
+        function showMessage(data) {
+            $('#contentMessage').html(data);
+            $('#errorMessage').show();
+        }
+
+        function showModal(title, content) {
+            $('#titleModal').html(title);
+            $('#contentModal').html(content);
+            $('#exampleModalCenter').modal('show');
+        }
+    </script>
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
 </div>
 </body>
 </html>

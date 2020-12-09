@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
 
         $accesses = DB::table('menu_role as mr')
-            ->select('mr.menu_id', 'mr.read_access', 'm.menu', 'm.alias')
+            ->select('mr.menu_id', 'mr.read_access', 'mr.create_access', 'mr.delete_access', 'mr.update_access', 'm.menu', 'm.alias')
             ->join('menu as m', 'mr.menu_id', 'm.id')
             ->where('user_role_id', '=', Auth::user()->role)
             ->get();
