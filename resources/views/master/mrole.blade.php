@@ -63,21 +63,6 @@
                 <h5>User Admin Panel</h5>
             </div>
             <div class="card-block table-border-style">
-                @if(session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('success')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @elseif(session('failed'))
-                    <div class="alert alert-danger" role="alert">
-                        {{session('failed')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
                 <div class="table-responsive">
                     <table class="table table-striped" id="dataTable">
                         <thead>
@@ -85,7 +70,7 @@
                             <th>ID</th>
                             <th>Role Name</th>
                             <th>Status</th>
-{{--                            <th>Action</th>--}}
+                            {{--                            <th>Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>

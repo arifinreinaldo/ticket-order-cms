@@ -359,6 +359,34 @@
                 <!-- [ breadcrumb ] end -->
                     <div class="main-body">
                         <div class="page-wrapper">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+
+                                </div>
+                            @endif
+                            @if(session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{session('success')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @elseif(session('failed'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{session('failed')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <span id="contentMessage"></span>
                                 <button type="button" class="close" id="closeMessage"><span
@@ -374,24 +402,20 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="titleModal"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="modal-body" id="contentModal">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-primary" id="confirmButtonModal">Yes</button>
-                        </div>
-                    </div>
+    <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body" id="contentModal">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" id="confirmButtonModal">Yes</button>
                 </div>
             </div>
         </div>
@@ -414,6 +438,7 @@
         function showMessage(data) {
             $('#contentMessage').html(data);
             $('#errorMessage').show();
+            $("html, body").animate({scrollTop: 0}, "slow");
         }
 
         function showModal(title, content) {
