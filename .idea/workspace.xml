@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mrole_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mrole_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master/muser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/muser.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +187,7 @@
       <workItem from="1607405612945" duration="102000" />
       <workItem from="1607432769038" duration="2288000" />
       <workItem from="1607494070187" duration="7364000" />
-      <workItem from="1607527157997" duration="1053000" />
+      <workItem from="1607527157997" duration="1206000" />
     </task>
     <servers />
   </component>
@@ -235,13 +231,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1607050224630" />
-    <state x="538" y="291" width="618" height="490" key="find.popup" timestamp="1607398768841">
+    <state x="538" y="291" width="618" height="490" key="find.popup" timestamp="1607528395738">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607398768841" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607528090625">
+    <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607528395738" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607528287882">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607528090625" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607528287882" />
   </component>
 </project>
