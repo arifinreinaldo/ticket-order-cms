@@ -67,6 +67,7 @@
                     <table class="table table-striped" id="dataTable">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Role Name</th>
                             <th>Status</th>
@@ -86,12 +87,14 @@
         <input type="hidden" name="userid" id="userid_param">
     </form>
     <script>
+        var table = ""
         $(document).ready(function () {
-            $("#dataTable").DataTable({
+            table = $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{route('/ajaxmrole')}}",
                 columns: [
+                    {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'role_name', name: 'u.role_name'},
                     {data: 'status_name', name: 's.name'},
@@ -111,6 +114,34 @@
         $(document).on("click", ".btn-edit", function () {
             var userid = $(this).attr('userid');
             window.location.href = '/mrole/edit/' + userid;
+        });
+        $(document).on("click", "#actActivate", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(1);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
+                showModal("Delete Confirmation", "Are you sure want to activate these roles?");
+            }
+        });
+        $(document).on("click", "#actDeactivate", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(2);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
+                // $('#actionForm').submit();
+                showModal("Delete Confirmation", "Are you sure want to deactivate these roles?");
+            }
+        });
+        $(document).on("click", "#actDelete", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(2);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/muser/destroy')}}');
+                showModal("Delete Confirmation", "Are you sure want to delete these roles?");
+            }
         });
     </script>
 @endsection

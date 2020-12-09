@@ -30,7 +30,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Role Name</label>
-                            <input type="text" class="form-control" name="role_name" required
+                            <input type="text" class="form-control" name="role_name" required id="role_name"
                                    @if (!empty($role))
                                    value="{{$role->role_name}}"
                                 @endif
@@ -104,16 +104,20 @@
         });
         $(document).on('click', '.btn-primary', function (e) {
             e.preventDefault();
-            var validateFilled = false;
-            $('.validateFilled').each(function () {
-                if ($(this).is(":checked")) {
-                    validateFilled = true;
-                }
-            });
-            if (!validateFilled) {
-                showMessage("Access must be given");
+            if ($('#role_name').val() == "") {
+                showMessage("Role name must be filled");
             } else {
-                $('#formAction').submit();
+                var validateFilled = false;
+                $('.validateFilled').each(function () {
+                    if ($(this).is(":checked")) {
+                        validateFilled = true;
+                    }
+                });
+                if (!validateFilled) {
+                    showMessage("Access must be given");
+                } else {
+                    $('#formAction').submit();
+                }
             }
         });
     </script>

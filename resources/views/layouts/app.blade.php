@@ -446,6 +446,21 @@
             $('#contentModal').html(content);
             $('#exampleModalCenter').modal('show');
         }
+        
+        function checkEmpty() {
+            var isEmpty = true;
+            var ids = "";
+            table.$('.check-control').each(function () {
+                if ($(this).is(":checked")) {
+                    isEmpty = false;
+                    ids += "," + $(this).attr('userid');
+                }
+            });
+            if (isEmpty) {
+                showMessage("Please Select One User");
+            }
+            return ids;
+        }
     </script>
     <style>
         .pointer {

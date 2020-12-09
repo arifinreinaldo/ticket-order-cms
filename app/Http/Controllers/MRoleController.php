@@ -193,6 +193,12 @@ class MRoleController extends Controller
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
+                ->addColumn("checkbox", function ($row) {
+                    $btn = "";
+                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
+                    return $btn;
+                })
+                ->escapeColumns('checkbox')
                 ->editColumn("role_name", function ($row) {
                     return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->role_name</span>";
                 })
