@@ -134,7 +134,7 @@
                 $('#state_param').val(1);
                 $('#userid_param').val(ids);
                 $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
-                showModal("Delete Confirmation", "Are you sure want to activate these users?");
+                showModal("Activate Confirmation", "Are you sure want to activate these users?");
             }
         });
         $(document).on("click", "#actDeactivate", function () {
@@ -144,7 +144,7 @@
                 $('#userid_param').val(ids);
                 $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
                 // $('#actionForm').submit();
-                showModal("Delete Confirmation", "Are you sure want to deactivate these users?");
+                showModal("Deactivate Confirmation", "Are you sure want to deactivate these users?");
             }
         });
         $(document).on("click", "#actDelete", function () {

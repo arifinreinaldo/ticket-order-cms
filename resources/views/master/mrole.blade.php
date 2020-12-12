@@ -60,7 +60,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5>User Admin Panel</h5>
+                <h5>User Role</h5>
             </div>
             <div class="card-block table-border-style">
                 <div class="table-responsive">
@@ -85,6 +85,7 @@
     <form action="" method="post" id="actionForm">
         @csrf
         <input type="hidden" name="userid" id="userid_param">
+        <input type="hidden" name="state" id="state_param">
     </form>
     <script>
         var table = ""
@@ -120,8 +121,8 @@
             if (ids != "") {
                 $('#state_param').val(1);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
-                showModal("Delete Confirmation", "Are you sure want to activate these roles?");
+                $('#actionForm').attr('action', '{{url('/mrole/toggle')}}');
+                showModal("Activate Confirmation", "Are you sure want to activate these roles?");
             }
         });
         $(document).on("click", "#actDeactivate", function () {
@@ -129,9 +130,9 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/muser/toggle')}}');
+                $('#actionForm').attr('action', '{{url('/mrole/toggle')}}');
                 // $('#actionForm').submit();
-                showModal("Delete Confirmation", "Are you sure want to deactivate these roles?");
+                showModal("Deactivate Confirmation", "Are you sure want to deactivate these roles?");
             }
         });
         $(document).on("click", "#actDelete", function () {
@@ -139,9 +140,13 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/muser/destroy')}}');
+                $('#actionForm').attr('action', '{{url('/mrole/destroy')}}');
                 showModal("Delete Confirmation", "Are you sure want to delete these roles?");
             }
+        });
+
+        $(document).on("click", "#confirmButtonModal", function () {
+            $('#actionForm').submit();
         });
     </script>
 @endsection

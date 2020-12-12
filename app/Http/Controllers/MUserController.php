@@ -163,9 +163,15 @@ class MUserController extends Controller
                 dd($ex);
             }
         } else {
-            $ids = explode(",", $data['userid']);
+            $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+                return $value != "";
+            });
             try {
-                $rst = MUser::whereIn('id', $ids)->update(['status' => $request['state']]);
+                $rst = MUser::whereIn('id', $ids)->get();
+                foreach ($rst as $item) {
+                    $item->status = $request['state'];
+                    $item->save();
+                }
                 if ($request['state'] == '1') {
                     return redirect("/muser")->with('success', 'User(s) has been activated');
                 } else if ($request['state'] == '2') {
@@ -185,7 +191,7 @@ class MUserController extends Controller
         ]);
         $ids = explode(",", $data['userid']);
         try {
-            $rst = MUser::whereIn('id', $ids)->delete();
+            $rst = MUser::destroy($ids);
             return redirect("/muser")->with('success', 'User(s) has been deleted');
 
         } catch (\Exception $exception) {
