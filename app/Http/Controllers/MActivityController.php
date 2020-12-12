@@ -102,6 +102,7 @@ class MActivityController extends Controller
             $mactivities = MActivity::findOrFail($id);
             $mactivities->update($request->all());
         } catch (Exception $e) {
+            report($e);
             return redirect("/mactivity")->with('failed', 'Failed update data.');
         }
         return redirect("/mactivity")->with('success', 'Success update data.');
@@ -112,6 +113,7 @@ class MActivityController extends Controller
         try {
             MActivity::destroy($id);
         } catch (Exception $e) {
+            report($e);
             return redirect("/mactivity")->with('failed', 'Failed delete data.');
         }
         return redirect("/mactivity")->with('success', 'Success delete data.');

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MUserRequest;
 use App\MRole;
 use App\MUser;
 use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Exception;
+use Exception;
 
 class MUserController extends Controller
 {
@@ -32,6 +31,7 @@ class MUserController extends Controller
             $muser = MUser::findOrFail($id);
             return view('master.muser_create', compact('muser', 'mrole'));
         } catch (ModelNotFoundException $ex) {
+            report($ex);
             return redirect("/muser")->with('failed', 'Data Not found');
         }
     }
@@ -45,12 +45,13 @@ class MUserController extends Controller
             'password' => 'required| min:7 | confirmed',
             'role' => 'required',
         ]);
-        $data['status'] = '1';
+//        $data['status'] = '1';
         $data['username'] = $data['name'];
         $data['password'] = bcrypt($data['password']);
         try {
             $musers = MUser::create($data);
         } catch (Exception $e) {
+            report($e);
             return redirect("/muser/create")->with('failed', 'Failed insert data.');
         }
         return redirect("/muser")->with('success', 'Success insert data.');
@@ -84,6 +85,7 @@ class MUserController extends Controller
             $musers->role = $data['role'];
             $musers->save();
         } catch (Exception $e) {
+            report($e);
             return redirect("/muser")->with('failed', 'Failed update data.');
         }
         return redirect("/muser")->with('success', 'Success update data.');
@@ -160,6 +162,7 @@ class MUserController extends Controller
             } catch (ModelNotFoundException $ex) {
                 return redirect("/muser")->with('failed', 'Data Not found');
             } catch (Exception$ex) {
+                report($ex);
                 dd($ex);
             }
         } else {
@@ -179,6 +182,7 @@ class MUserController extends Controller
                 }
 
             } catch (\Exception $exception) {
+                report($exception);
                 return redirect("/muser")->with('failed', 'Failed to update user(s)');
             }
         }
@@ -195,6 +199,7 @@ class MUserController extends Controller
             return redirect("/muser")->with('success', 'User(s) has been deleted');
 
         } catch (\Exception $exception) {
+            report($exception);
             return redirect("/muser")->with('failed', 'Failed to delete user(s)');
         }
     }

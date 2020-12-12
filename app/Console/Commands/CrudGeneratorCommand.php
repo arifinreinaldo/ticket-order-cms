@@ -50,7 +50,7 @@ class CrudGeneratorCommand extends Command
             }
             $this->controller($name);
             $this->model($name);
-            $this->request($name);
+//            $this->request($name);
             $this->blade($name);
 
             File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "','{$name}Controller@webIndex')->name('" . strtolower($name) . "');");

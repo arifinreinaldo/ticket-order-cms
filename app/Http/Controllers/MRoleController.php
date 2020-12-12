@@ -115,6 +115,7 @@ class MRoleController extends Controller
                 return redirect("/mrole/create")->with('failed', 'Failed create access data.');
             }
         } catch (\Exception $e) {
+            report($e);
             return redirect("/mrole/create")->with('failed', 'Failed create role data.');
         }
     }
@@ -167,9 +168,11 @@ class MRoleController extends Controller
                 return redirect("/mrole")->with('success', 'Success update role data.');
 
             } catch (\Exception $ex) {
+                report($ex);
                 return redirect("/mrole/create")->with('failed', 'Failed update access data.');
             }
         } catch (\Exception $e) {
+            report($e);
             return redirect("/mrole")->with('failed', 'Failed update role data.');
         }
     }
@@ -235,6 +238,7 @@ class MRoleController extends Controller
             }
 
         } catch (\Exception $exception) {
+            report($exception);
             return redirect("/mrole")->with('failed', 'Failed to update role user(s)');
         }
     }
@@ -250,6 +254,7 @@ class MRoleController extends Controller
             return redirect("/mrole")->with('success', 'Role(s) has been deleted');
 
         } catch (\Exception $exception) {
+            report($exception);
             return redirect("/mrole")->with('failed', 'Failed to delete role(s)');
         }
     }
