@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.5",
         "guzzlehttp/guzzle": "7.2.0",
         "laravel/ui": "1.0.*",
-        "yajra/laravel-datatables-oracle": "^9.9"
+        "yajra/laravel-datatables-oracle": "^9.9",
+        "spatie/laravel-activitylog": "3.16.1"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",

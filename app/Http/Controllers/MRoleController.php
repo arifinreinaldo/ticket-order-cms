@@ -174,16 +174,6 @@ class MRoleController extends Controller
         }
     }
 
-    public function webDestroy($id)
-    {
-        try {
-            MRole::destroy($id);
-        } catch (Exception $e) {
-            return redirect("/mrole")->with('failed', 'Failed delete data.');
-        }
-        return redirect("/mrole")->with('success', 'Success delete data.');
-    }
-
     public function ajaxData(Request $request)
     {
         $results = DB::table('user_role AS u')
@@ -229,21 +219,38 @@ class MRoleController extends Controller
         $data = request()->validate([
             'userid' => 'required'
         ]);
+        $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+            return $value != "";
+        });
         try {
-            $message = 'activated';
-            $muser = MRole::findOrFail($data['userid']);
-            if ($muser->status == '1') {
-                $muser->status = '2';
-                $message = 'deactivated';
-            } else if ($muser->status == '2') {
-                $muser->status = '1';
+            $rst = MRole::whereIn('id', $ids)->get();
+            foreach ($rst as $item) {
+                $item->status = $request['state'];
+                $item->save();
             }
-            $muser->save();
-            return redirect("/mrole")->with('success', 'Role has been ' . $message);
-        } catch (ModelNotFoundException $ex) {
-            return redirect("/mrole")->with('failed', 'Data Not found');
-        } catch (Exception$ex) {
-            dd($ex);
+            if ($request['state'] == '1') {
+                return redirect("/mrole")->with('success', 'Role(s) has been activated');
+            } else if ($request['state'] == '2') {
+                return redirect("/mrole")->with('success', 'Role(s) has been deactivated');
+            }
+
+        } catch (\Exception $exception) {
+            return redirect("/mrole")->with('failed', 'Failed to update role user(s)');
+        }
+    }
+
+    public function webDestroy(Request $request)
+    {
+        $data = request()->validate([
+            'userid' => 'required'
+        ]);
+        $ids = explode(",", $data['userid']);
+        try {
+            $rst = MRole::destroy($ids);
+            return redirect("/mrole")->with('success', 'Role(s) has been deleted');
+
+        } catch (\Exception $exception) {
+            return redirect("/mrole")->with('failed', 'Failed to delete role(s)');
         }
     }
 }

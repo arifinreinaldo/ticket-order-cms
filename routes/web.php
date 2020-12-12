@@ -51,6 +51,14 @@ Route::group([
     Route::post('/mrole/store', 'MRoleController@webStore');
     Route::post('/mrole/toggle', 'MRoleController@webToggle');
     Route::get('/ajaxmrole', 'MRoleController@ajaxData')->name('/ajaxmrole');
+    Route::post('/mrole/destroy', 'MRoleController@webDestroy');
+
+    Route::get('/mactivity', 'MActivityController@webIndex')->name('mactivity');
+    Route::get('/mactivity/display/error', 'MActivityController@webError');
+    Route::post('/mactivity/store', 'MActivityController@webStore');
+    Route::post('/mactivity/update/{id}', 'MActivityController@webUpdate');
+    Route::post('/mactivity/destroy/{id}', 'MActivityController@webDestroy');
+    Route::get('/ajaxmactivity', 'MActivityController@ajaxData')->name('/ajaxmactivity');
 });
 //Route::get('/mmenurole', 'MMenuRoleController@webIndex')->name('mmenurole');
 //Route::post('/mmenurole/store', 'MMenuRoleController@webStore');
