@@ -45,7 +45,7 @@ class MUserController extends Controller
             'password' => 'required| min:7 | confirmed',
             'role' => 'required',
         ]);
-//        $data['status'] = '1';
+        $data['status'] = '1';
         $data['username'] = $data['name'];
         $data['password'] = bcrypt($data['password']);
         try {

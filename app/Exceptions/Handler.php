@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use App\ErrorLog;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,10 +40,13 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        $data['user_id'] = Auth::user()->id;
-        $data['action'] = "";
-        $data['exception'] = $exception;
-        ErrorLog::create($data);
+        if ($exception instanceof QueryException) {
+            ErrorLog::where('updated_at', '<', Carbon::now()->subDay(env('DELETE_DURATION')))->delete();
+            $data['user_id'] = Auth::user()->id;
+            $data['action'] = "";
+            $data['exception'] = $exception->getMessage();
+            ErrorLog::create($data);
+        }
         parent::report($exception);
     }
 

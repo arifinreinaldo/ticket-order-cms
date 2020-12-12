@@ -53,7 +53,7 @@ class MActivityController extends Controller
         $activities = DB::table('activity_log AS a')
             ->select('log_name', 'description', 'subject_id', 'u.name', 'a.updated_at')
             ->leftJoin('users as u', 'a.causer_id', '=', 'u.id')
-            ->orderBy('a.updated_at', 'DESC')->paginate(2);
+            ->orderBy('a.updated_at', 'DESC')->paginate(10);
         $activity = "active";
         $error = "";
         return view('master.mactivity', compact('activities', 'activity', 'error'));
@@ -61,13 +61,13 @@ class MActivityController extends Controller
 
     public function webError()
     {
-        $activities = DB::table('activity_log AS a')
-            ->select('log_name', 'description', 'subject_id', 'u.name', 'a.updated_at')
-            ->leftJoin('users as u', 'a.causer_id', '=', 'u.id')
-            ->orderBy('a.updated_at', 'DESC')->paginate(2);
+        $activities = DB::table('error_log AS a')
+            ->select('exception','a.updated_at')
+            ->leftJoin('users as u', 'a.user_id', '=', 'u.id')
+            ->orderBy('a.updated_at', 'DESC')->paginate(10);
         $activity = "";
         $error = "active";
-        return view('master.mactivity', compact('activities', 'activity', 'error'));
+        return view('master.mactivityerror', compact('activities', 'activity', 'error'));
     }
 
     public function webStore(MActivityRequest $request)
