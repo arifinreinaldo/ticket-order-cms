@@ -23,182 +23,19 @@ class CreateMenuRoleTable extends Migration
             $table->string('delete_access');
             $table->timestamps();
         });
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '1',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '2',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '3',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '4',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '5',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '6',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '7',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '8',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '9',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '10',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '11',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '12',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '13',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '14',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '15',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
-        DB::table('menu_role')->insert(
-            array(
-                'user_role_id' => '1',
-                'menu_id' => '16',
-                'read_access' => 'X',
-                'create_access' => 'X',
-                'update_access' => 'X',
-                'delete_access' => 'X'
-            )
-        );
-
+        $menus = DB::table('menu')->get();
+        foreach ($menus as $menu) {
+            DB::table('menu_role')->insert(
+                array(
+                    'user_role_id' => '1',
+                    'menu_id' => $menu->id,
+                    'read_access' => 'X',
+                    'create_access' => 'X',
+                    'update_access' => 'X',
+                    'delete_access' => 'X'
+                )
+            );
+        }
     }
 
     /**

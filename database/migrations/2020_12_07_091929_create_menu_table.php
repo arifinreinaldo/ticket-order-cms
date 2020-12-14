@@ -40,7 +40,7 @@ class CreateMenuTable extends Migration
         );
         DB::table('menu')->insert(
             array(
-                'menu' => 'Theme Park & Game Management',
+                'menu' => 'Theme Park Management',
                 'alias' => 'mtheme'
             )
         );
@@ -48,6 +48,13 @@ class CreateMenuTable extends Migration
             array(
                 'menu' => 'Branch Management',
                 'alias' => 'mbranch'
+            )
+        );
+
+        DB::table('menu')->insert(
+            array(
+                'menu' => 'Game Center Management',
+                'alias' => 'mgamecenter'
             )
         );
         DB::table('menu')->insert(
@@ -90,6 +97,12 @@ class CreateMenuTable extends Migration
             array(
                 'menu' => 'Point Management',
                 'alias' => 'mpoint'
+            )
+        );
+        DB::table('menu')->insert(
+            array(
+                'menu' => 'Game Management',
+                'alias' => 'mgame'
             )
         );
         DB::table('menu')->insert(
