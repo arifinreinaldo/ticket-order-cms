@@ -16,7 +16,7 @@ class MUserController extends Controller
     //web function
     public function webIndex()
     {
-        dd(Auth::user());
+        dd(Auth::user()->id);
         return view('master.muser');
     }
 
