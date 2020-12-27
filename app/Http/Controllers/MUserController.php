@@ -7,6 +7,7 @@ use App\MUser;
 use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
@@ -15,6 +16,7 @@ class MUserController extends Controller
     //web function
     public function webIndex()
     {
+        dd(Auth::user());
         return view('master.muser');
     }
 
