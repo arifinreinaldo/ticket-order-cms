@@ -92,23 +92,23 @@
     <script>
         var table = ""
         $(document).ready(function () {
-            {{--table = $("#dataTable").DataTable({--}}
-            {{--    processing: true,--}}
-            {{--    serverSide: true,--}}
-            {{--    ajax: "{{route('/ajaxmuser')}}",--}}
-            {{--    columns: [--}}
-            {{--        {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},--}}
-            {{--        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},--}}
-            {{--        {data: 'name', name: 'u.name'},--}}
-            {{--        {data: 'email', name: 'u.email'},--}}
-            {{--        {data: 'role_name', name: 'ur.role_name'},--}}
-            {{--        {data: 'status_name', name: 's.name'},--}}
-            {{--        // {data: 'action', name: 'action', orderable: false, searchable: false},--}}
-            {{--    ]--}}
-            {{--    // , columnDefs: [--}}
-            {{--    //     {width: '10%', targets: 5}--}}
-            {{--    // ],--}}
-            {{--});--}}
+            table = $("#dataTable").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{route('/ajaxmuser')}}",
+                columns: [
+                    {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'name', name: 'u.name'},
+                    {data: 'email', name: 'u.email'},
+                    {data: 'role_name', name: 'ur.role_name'},
+                    {data: 'status_name', name: 's.name'},
+                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+                // , columnDefs: [
+                //     {width: '10%', targets: 5}
+                // ],
+            });
         });
         $(document).on("click", ".btn-activate", function () {
             var userid = $(this).attr('userid');
