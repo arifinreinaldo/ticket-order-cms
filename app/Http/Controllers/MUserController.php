@@ -193,7 +193,9 @@ class MUserController extends Controller
         $data = request()->validate([
             'userid' => 'required'
         ]);
-        $ids = explode(",", $data['userid']);
+        $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+            return $value != "";
+        });
         try {
             $rst = MUser::destroy($ids);
             return redirect("/muser")->with('success', 'User(s) has been deleted');

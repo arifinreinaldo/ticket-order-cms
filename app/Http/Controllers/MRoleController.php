@@ -248,7 +248,9 @@ class MRoleController extends Controller
         $data = request()->validate([
             'userid' => 'required'
         ]);
-        $ids = explode(",", $data['userid']);
+        $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+            return $value != "";
+        });
         try {
             $rst = MRole::destroy($ids);
             return redirect("/mrole")->with('success', 'Role(s) has been deleted');
