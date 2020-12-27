@@ -7,7 +7,6 @@ use App\MUser;
 use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Exception;
 
 class MUserController extends Controller
@@ -93,53 +92,53 @@ class MUserController extends Controller
 
     public function ajaxData(Request $request)
     {
-        $results = DB::table('users AS u')
-            ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status,ur.role_name")
-            ->join('status AS s', 'u.status', '=', 's.id')
-            ->join('user_role AS ur', 'u.role', '=', 'ur.id')
-            ->orderBy('u.id', 'ASC');
-        if ($request->ajax()) {
-            return Datatables::of($results)
-                ->addIndexColumn()
-                ->addColumn("checkbox", function ($row) {
-                    $btn = "";
-                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
-                    return $btn;
-                })
-                ->escapeColumns('checkbox')
-//                ->editColumn("status_name", function ($row) {
+//        $results = DB::table('users AS u')
+//            ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status,ur.role_name")
+//            ->join('status AS s', 'u.status', '=', 's.id')
+//            ->join('user_role AS ur', 'u.role', '=', 'ur.id')
+//            ->orderBy('u.id', 'ASC');
+//        if ($request->ajax()) {
+//            return Datatables::of($results)
+//                ->addIndexColumn()
+//                ->addColumn("checkbox", function ($row) {
 //                    $btn = "";
-//                    if ($row->status == '1') {
-//                        $btn .= "<a class='label theme-bg2 text-white f-12'>Active</a>";
-//                    } else {
-//                        $btn .= "<a class='label theme-bg text-white f-12'>Inactive</a>";
-//                    }
+//                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
 //                    return $btn;
 //                })
-//                ->escapeColumns('status_name')
-                ->editColumn("name", function ($row) {
-                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->name</span>";
-                })
-                ->escapeColumns('name')
-                ->addColumn("action", function ($row) {
-                    $btn = "";
-                    $btn .= "<button class='btn btn-success btn-edit' title='Edit User' userid='$row->id'>
-                                            <span class='fa fa-fw fa-user-edit'></span>
-                                        </button>";
-                    if ($row->status == '1') {
-                        $btn .= "<button class='btn btn-light btn-activate' title='Deactivate User' userid='$row->id'>
-                                            <span class='fa fa-fw fa-toggle-on'></span>
-                                        </button>";
-                    } else {
-                        $btn .= "<button class='btn btn-light btn-activate' title='Activate User' userid='$row->id'>
-                                            <span class='fa fa-fw fa-toggle-off'></span>
-                                        </button>";
-                    }
-
-                    return $btn;
-                })
-                ->make(true);
-        }
+//                ->escapeColumns('checkbox')
+////                ->editColumn("status_name", function ($row) {
+////                    $btn = "";
+////                    if ($row->status == '1') {
+////                        $btn .= "<a class='label theme-bg2 text-white f-12'>Active</a>";
+////                    } else {
+////                        $btn .= "<a class='label theme-bg text-white f-12'>Inactive</a>";
+////                    }
+////                    return $btn;
+////                })
+////                ->escapeColumns('status_name')
+//                ->editColumn("name", function ($row) {
+//                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->name</span>";
+//                })
+//                ->escapeColumns('name')
+//                ->addColumn("action", function ($row) {
+//                    $btn = "";
+//                    $btn .= "<button class='btn btn-success btn-edit' title='Edit User' userid='$row->id'>
+//                                            <span class='fa fa-fw fa-user-edit'></span>
+//                                        </button>";
+//                    if ($row->status == '1') {
+//                        $btn .= "<button class='btn btn-light btn-activate' title='Deactivate User' userid='$row->id'>
+//                                            <span class='fa fa-fw fa-toggle-on'></span>
+//                                        </button>";
+//                    } else {
+//                        $btn .= "<button class='btn btn-light btn-activate' title='Activate User' userid='$row->id'>
+//                                            <span class='fa fa-fw fa-toggle-off'></span>
+//                                        </button>";
+//                    }
+//
+//                    return $btn;
+//                })
+//                ->make(true);
+//        }
     }
 
     public function webToggle(Request $request)
