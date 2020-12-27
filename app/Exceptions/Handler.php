@@ -64,10 +64,10 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
-    protected function context()
-    {
-        return array_merge(parent::context(), [
-            'user_id' => Auth::user()->id,
-        ]);
-    }
+//    protected function context()
+//    {
+//        return array_merge(parent::context(), [
+//            'user_id' => Auth::user()->id,
+//        ]);
+//    }
 }
