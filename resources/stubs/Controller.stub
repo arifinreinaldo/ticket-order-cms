@@ -8,50 +8,16 @@ use Exception;
 
 class {{modelName}}Controller extends Controller
 {
-    public function index()
-    {
-        ${{modelNamePluralLowerCase}} = {{modelName}}::latest()->get();
-
-        return response()->json(${{modelNamePluralLowerCase}});
-    }
-
-    public function store({{modelName}}Request $request)
-    {
-        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
-
-        return response()->json(${{modelNameSingularLowerCase}}, 201);
-    }
-
-    public function show($id)
-    {
-        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
-
-        return response()->json(${{modelNameSingularLowerCase}});
-    }
-
-    public function update({{modelName}}Request $request, $id)
-    {
-        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
-        ${{modelNameSingularLowerCase}}->update($request->all());
-
-        return response()->json(${{modelNameSingularLowerCase}}, 200);
-    }
-
-    public function destroy($id)
-    {
-        {{modelName}}::destroy($id);
-
-        return response()->json(null, 204);
-    }
-
     //web function
     public function webIndex()
     {
-        $user = auth()->user();
-        ${{modelNamePluralLowerCase}} = {{modelName}}::where('id', '>', '0')->paginate(10);
-        return view('master.{{modelNameSingularLowerCase}}', compact('{{modelNamePluralLowerCase}}','user'));
+        return view('master.{{modelNameSingularLowerCase}}');
     }
 
+    public function webCreate()
+    {
+        return view('master.{{modelNameSingularLowerCase}}_create');
+    }
     public function webStore({{modelName}}Request $request)
     {
         $data = request()->validate([
@@ -91,14 +57,108 @@ class {{modelName}}Controller extends Controller
         return redirect("/{{modelNameSingularLowerCase}}")->with('success','Success update data.');
     }
 
-    public function webDestroy($id)
+    public function ajaxData(Request $request)
     {
-        try{
-            {{modelName}}::destroy($id);
-        }catch(Exception $e){
-            report($e);
-            return redirect("/{{modelNameSingularLowerCase}}")->with('failed','Failed delete data.');
+        $results = DB::table(' AS u')
+            ->selectRaw("")
+            ->join(' AS s', 'u.status', '=', 's.id')
+        if ($request->ajax()) {
+            return Datatables::of($results)
+                ->addIndexColumn()
+                ->addColumn("checkbox", function ($row) {
+                    $btn = "";
+                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
+                    return $btn;
+                })
+                ->escapeColumns('checkbox')
+                ->editColumn("name", function ($row) {
+                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->name</span>";
+                })
+                ->escapeColumns('name')
+                ->addColumn("action", function ($row) {
+                    $btn = "";
+                    $btn .= "<button class='btn btn-success btn-edit' title='Edit User' userid='$row->id'>
+                                            <span class='fa fa-fw fa-user-edit'></span>
+                                        </button>";
+                    if ($row->status == '1') {
+                        $btn .= "<button class='btn btn-light btn-activate' title='Deactivate User' userid='$row->id'>
+                                            <span class='fa fa-fw fa-toggle-on'></span>
+                                        </button>";
+                    } else {
+                        $btn .= "<button class='btn btn-light btn-activate' title='Activate User' userid='$row->id'>
+                                            <span class='fa fa-fw fa-toggle-off'></span>
+                                        </button>";
+                    }
+
+                    return $btn;
+                })
+                ->make(true);
         }
-        return redirect("/{{modelNameSingularLowerCase}}")->with('success','Success delete data.');
+    }
+
+    public function webEdit($id)
+    {
+        try {
+            $data = {{modelName}}::findOrFail($id);
+            $size = {{modelName}}::all()->count();
+            return view('master.{{modelNameSingularLowerCase}}_create', compact('data', 'size'));
+        } catch (ModelNotFoundException $ex) {
+            report($ex);
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed', 'Data Not found');
+        }
+    }
+
+    public function webToggle(Request $request)
+    {
+        $data = request()->validate([
+            'userid' => 'required'
+        ]);
+        $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+            return $value != "";
+        });
+        try {
+            $rst = {{modelName}}::whereIn('id', $ids)->get();
+            foreach ($rst as $item) {
+                $item->status = $request['state'];
+                $item->save();
+            }
+            if ($request['state'] == '1') {
+                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been activated');
+            } else if ($request['state'] == '2') {
+                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been deactivated');
+            }
+
+        } catch (\Exception $exception) {
+            report($exception);
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed', 'Failed to update role user(s)');
+        }
+    }
+
+    public function webDestroy(Request $request)
+    {
+        $data = request()->validate([
+            'userid' => 'required'
+        ]);
+        $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {
+            return $value != "";
+        });
+        try {
+            foreach ($ids as $id) {
+                $data = {{modelName}}::findOrFail($id);
+                try {
+                    Util::deleteFile($data->image);
+                    {{modelName}}::destroy($id);
+                    {{modelName}}::where('order', '>=', $data->order)
+                        ->update(['order' => DB::raw('"order" - 1')]);
+                } catch (QueryException $ex) {
+                    report($ex);
+                }
+            }
+            return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been deleted');
+
+        } catch (\Exception $exception) {
+            report($exception);
+            return redirect("/{{modelNameSingularLowerCase}}")->with('failed', 'Failed to delete role(s)');
+        }
     }
 }

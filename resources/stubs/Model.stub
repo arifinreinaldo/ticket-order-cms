@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class {{modelName}} extends Model
 {
+    use  LogsActivity;
+
+    protected $table = '';
     protected static $logAttributes = [];
     protected static $logName = ;
     protected static $logOnlyDirty = true;
