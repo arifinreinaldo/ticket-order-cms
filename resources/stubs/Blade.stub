@@ -1,199 +1,163 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        {{modelName}}
-                        <button type="button" style="float: right" class="btn btn-primary" id="btn-add"
-                                data-toggle="modal" data-target="#actionModal">
-                            <span class="fa fa-plus"></span> Add Data
-                        </button>
-                    </div>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+    {{--    <div class="page-header">--}}
+    {{--        <div class="page-block">--}}
+    {{--            <div class="row align-items-center">--}}
+    {{--                <div class="col-md-12">--}}
+    {{--                    <div class="page-header-title">--}}
+    {{--                        <h5 class="m-b-10">User Admin Management</h5>--}}
+    {{--                    </div>--}}
+    {{--                    <ul class="breadcrumb">--}}
+    {{--                        <li class="breadcrumb-item"><a href="{{url('home')}}">Home</a></li>--}}
+    {{--                        <li class="breadcrumb-item"><a href="#">User Admin Management</a></li>--}}
+    {{--                    </ul>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+    {{$create = ''}}
+    {{$update = ''}}
+    {{$delete = ''}}
+    @foreach (session('menu') as $menu)
+        @if($menu->alias=='{{modelNameSingularLowerCase}}')
+            @php($create = $menu->create_access)
+            @php($update = $menu->update_access)
+            @php($delete = $menu->delete_access)
+        @endif
+    @endforeach
+    @if($update=='X' or $delete=='X' or $create=='X')
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    @if($create=='X')
+                        <a href="{{url('/{{modelNameSingularLowerCase}}/create')}}">
+                            <button type="button" class="btn btn-primary" title="">Create</button>
+                        </a>
+                    @endif
+                    @if($update=='X' or $delete=='X')
+                        <div class="btn-group mb-2 mr-2 float-right">
+                            <button type="button" class="btn btn-info">Action</button>
+                            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                                    class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-
+                            <div class="dropdown-menu">
+                                @if($update=='X')
+                                    <span class="dropdown-item pointer" id="actActivate">Activate</span>
+                                    <span class="dropdown-item pointer" id="actDeactivate">Deactivate</span>
+                                @endif
+                                @if($delete=='X')
+                                    <span class="dropdown-item pointer text-c-red" id="actDelete">Delete</span>
+                                @endif
+                            </div>
                         </div>
                     @endif
-                    @if(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{session('success')}}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @elseif(session('failed'))
-                        <div class="alert alert-danger" role="alert">
-                            {{session('failed')}}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
+                </div>
+            </div>
+        </div>
+    @endif
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Games Management</h5>
+            </div>
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="dataTable">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>ID</th>
+                            <th>Games Title</th>
+                            <th>Games Cover</th>
+                            <th>Order ID</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                    <div class="col-6">
-                        <div class="modal" id="actionModal" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Add Data</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="formAction" action="/{{modelNameSingularLowerCase}}/store" method="POST">
-                                            {{csrf_field()}}
-                                            <div class="form-group">
-                                                <label for=""></label>
-                                                <input type="text" class="form-control" id=""
-                                                       name=""
-                                                       aria-describedby="" maxlength="">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Delete Data</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="formDelete" action="/{{modelNameSingularLowerCase}}/destroy" method="POST">
-                                            {{csrf_field()}}
-                                            Are you sure want to delete data?
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                        </button>
-                                        <button type="button" id="btnDelete" class="btn btn-danger">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <div class="col-12">
-                            <table id="tabeldata" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Action</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php
-                                    $i=0;
-                                @endphp
-                                @foreach(${{modelNameSingularLowerCase}} as $data)
-                                    <tr>
-                                        <td>{{$data->}}</td>
-                                        <td>{{$data->}}</td>
-                                        <td>
-                                            <button class="btn btn-primary btn-edit"
-                                                    id="{{$data->}}">
-                                                <span class="fa fa-pen"></span>
-                                            </button>
-                                            &nbsp
-
-                                            <button class="btn btn-danger btn-delete"
-                                                    id="{{$data->}}"
-                                            >
-                                                <span class="fa fa-trash"></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {{${{modelNamePluralLowerCase}}->links()}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <form action="" method="post" id="actionForm">
+        @csrf
+        <input type="hidden" name="userid" id="userid_param">
+        <input type="hidden" name="state" id="state_param">
+    </form>
     <script>
-        $(document).on("keyup", "input.onlynumber", function () {
-            var value = $(this).val();
-            $(this).val($(this).val().replace(/\D/g, ''));
-        });
-
+        var table = ""
         $(document).ready(function () {
-
-            $("#btnSave").click(function () {
-                $("#formAction").submit();
+            table = $("#dataTable").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{URL::to('/{{modelNameSingularLowerCase}}ajax')}}",
+                columns: [
+                    {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'title', name: 'u.title'},
+                    {data: 'image', name: 'u.image', orderable: false, searchable: false},
+                    {data: 'order', name: 'u.order'},
+                    {data: 'name', name: 's.name'},
+                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+                // , columnDefs: [
+                //     {width: '10%', targets: 5}
+                // ],
             });
-
-            $("#btnDelete").click(function () {
-                $("#formDelete").submit();
+        });
+        $(document).on("click", ".btn-activate", function () {
+            var userid = $(this).attr('userid');
+            $('#userid_param').val(userid);
+            $('#actionForm').attr('action', '{{url('/{{modelNameSingularLowerCase}}/toggle')}}');
+            $('#actionForm').submit();
+        });
+        @if($update=='X')
+        $(document).on("click", ".btn-edit", function () {
+            var userid = $(this).attr('userid');
+            window.location.href = '/{{modelNameSingularLowerCase}}/edit/' + userid;
+        });
+        @endif
+        $(document).on("click", "#all_check", function () {
+            var check = $(this).is(':checked');
+            table.$('.check-control').each(function () {
+                $(this).prop('checked', check);
             });
-
-            $("#btn-add").click(function () {
-                $("#formAction").attr("action", "/{{modelNameSingularLowerCase}}/store");
-            });
-
-            $(".btn-edit").click(function () {
-
-                var id = $(this).attr("id");
-                var field1 = $(this).attr("field1");
-                var field2 = $(this).attr("field2");
-
-                $("#formAction").attr("action", "/{{modelNameSingularLowerCase}}/update/" + id);
-
-                $("#id").val(id);
-                $("#field1").val(field1);
-                $("#field2").val(field2);
-
-                $("#actionModal").modal("show");
-            })
-
-            $(".btn-delete").click(function () {
-                var id = $(this).attr("id");
-                $("#formDelete").attr("action", "/{{modelNameSingularLowerCase}}/destroy/" + id);
-                $("#deleteModal").modal("show");
-            })
-
-            $("#tabeldata_filter").css("float", "right");
-
-            $("#tabeldata_paginate").css("float", "right");
+        });
+        $(document).on("click", "#actActivate", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(1);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/{{modelNameSingularLowerCase}}/toggle')}}');
+                showModal("Activate Confirmation", "Are you sure want to activate these users?");
+            }
+        });
+        $(document).on("click", "#actDeactivate", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(2);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/{{modelNameSingularLowerCase}}/toggle')}}');
+                // $('#actionForm').submit();
+                showModal("Deactivate Confirmation", "Are you sure want to deactivate these users?");
+            }
+        });
+        $(document).on("click", "#actDelete", function () {
+            var ids = checkEmpty();
+            if (ids != "") {
+                $('#state_param').val(2);
+                $('#userid_param').val(ids);
+                $('#actionForm').attr('action', '{{url('/{{modelNameSingularLowerCase}}/destroy')}}');
+                showModal("Delete Confirmation", "Are you sure want to delete these users?");
+            }
+        });
+        $(document).on("click", "#confirmButtonModal", function () {
+            $('#actionForm').submit();
         });
     </script>
-
 @endsection
 

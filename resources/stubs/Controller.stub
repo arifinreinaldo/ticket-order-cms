@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\{{modelName}};
 use DataTables;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class {{modelName}}Controller extends Controller
@@ -19,14 +20,14 @@ class {{modelName}}Controller extends Controller
     {
         return view('master.{{modelNameSingularLowerCase}}_create');
     }
-    public function webStore({{modelName}}Request $request)
+    public function webStore(Request $request)
     {
         $data = request()->validate([
 
         ]);
 
         try{
-            ${{modelNamePluralLowerCase}} = {{modelName}}::create($request->all());
+            ${{modelNamePluralLowerCase}} = {{modelName}}::create($data);
         }catch(Exception $e){
             report($e);
             return redirect("/{{modelNameSingularLowerCase}}")->with('failed','Failed insert data.');

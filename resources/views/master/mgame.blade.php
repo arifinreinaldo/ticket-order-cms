@@ -94,7 +94,7 @@
             table = $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('/ajaxmgame')}}",
+                ajax: "{{URL::to('/ajaxmgame')}}",
                 columns: [
                     {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},

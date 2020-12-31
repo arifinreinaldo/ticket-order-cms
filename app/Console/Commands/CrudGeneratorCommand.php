@@ -55,11 +55,12 @@ class CrudGeneratorCommand extends Command
 
             File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "','{$name}Controller@webIndex')->name('" . strtolower($name) . "');");
             File::append(base_path('routes/web.php'), 'Route::post(\'/' . strtolower($name) . "/store','{$name}Controller@webStore');");
+            File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "/create','{$name}Controller@webCreate');");
             File::append(base_path('routes/web.php'), 'Route::post(\'/' . strtolower($name) . "/update','{$name}Controller@webUpdate');");
             File::append(base_path('routes/web.php'), 'Route::post(\'/' . strtolower($name) . "/destroy','{$name}Controller@webDestroy');");
-            File::append(base_path('routes/web.php'), 'Route::post(\'/' . strtolower($name) . "/edit/{id}','{$name}Controller@webEdit');");
+            File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "/edit/{id}','{$name}Controller@webEdit');");
             File::append(base_path('routes/web.php'), 'Route::post(\'/' . strtolower($name) . "/toggle','{$name}Controller@webToggle');");
-            File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "/ajaxData','{$name}Controller@ajaxData')->name('" . strtolower($name) . "/ajaxData');");
+            File::append(base_path('routes/web.php'), 'Route::get(\'/' . strtolower($name) . "ajax','{$name}Controller@ajaxData')->name('" . strtolower($name) . "ajax');");
 
 
 //            Artisan::call('make:migration create_' . strtolower(Str::plural($name)) . '_table --create=' . strtolower(Str::plural($table_name)));

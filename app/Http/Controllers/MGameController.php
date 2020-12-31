@@ -112,7 +112,6 @@ class MGameController extends Controller
             $oldData->link = $data['link'];
 
             if ($request['image']) {
-                Storage::delete("public/" . $oldData->image);
                 $imagePath = Util::updateFile($oldData->image, request('image'), 'game_image');
                 unset($data['image']);
                 $oldData->image = $imagePath;
@@ -137,8 +136,6 @@ class MGameController extends Controller
 
     public function ajaxData(Request $request)
     {
-//        $results = DB::table('games AS u')
-//            ->join('status AS s', 'u.status', '=', 's.id');
         $results = MGame::select('u.id as id_game', 'title', 'image', 'order', 'name')->from('games as u')->join('status AS s', 'u.status', '=', 's.id');
 
         if ($request->ajax()) {
