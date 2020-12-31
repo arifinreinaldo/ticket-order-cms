@@ -96,8 +96,7 @@ class MUserController extends Controller
         $results = DB::table('users AS u')
             ->selectRaw("u.id,u.name,u.email,u.role,s.name as status_name,u.status,ur.role_name")
             ->join('status AS s', 'u.status', '=', 's.id')
-            ->join('user_role AS ur', 'u.role', '=', 'ur.id')
-            ->orderBy('u.id', 'ASC');
+            ->join('user_role AS ur', 'u.role', '=', 'ur.id');
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
@@ -163,7 +162,6 @@ class MUserController extends Controller
                 return redirect("/muser")->with('failed', 'Data Not found');
             } catch (Exception$ex) {
                 report($ex);
-                dd($ex);
             }
         } else {
             $ids = collect(explode(",", $data['userid']))->filter(function ($value, $key) {

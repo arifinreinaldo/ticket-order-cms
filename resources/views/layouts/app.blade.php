@@ -313,7 +313,6 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
-                                <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
                                 {{Auth::user()->name}}
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

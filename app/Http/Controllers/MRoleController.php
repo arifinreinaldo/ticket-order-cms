@@ -181,8 +181,7 @@ class MRoleController extends Controller
     {
         $results = DB::table('user_role AS u')
             ->selectRaw("u.id,u.role_name,u.status,s.name as status_name")
-            ->join('status AS s', 'u.status', '=', 's.id')
-            ->orderBy('u.id', 'ASC');
+            ->join('status AS s', 'u.status', '=', 's.id');
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()

@@ -3,13 +3,36 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/master/mactivityerror.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/Util.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MRoleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_091929_create_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_091929_create_menu_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +46,11 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -141,7 +169,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -154,11 +182,11 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/resources/views/master" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/public/datatable" />
       <recent name="$PROJECT_DIR$/resources" />
-      <recent name="$PROJECT_DIR$/app/Console/Commands" />
     </key>
   </component>
   <component name="RunManager">
@@ -194,11 +222,30 @@
       <workItem from="1607527157997" duration="1206000" />
       <workItem from="1607652678116" duration="7613000" />
       <workItem from="1607666482276" duration="2211000" />
+      <workItem from="1609084575402" duration="1199000" />
+      <workItem from="1609244305236" duration="4569000" />
+      <workItem from="1609405115218" duration="7071000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add dd" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607005600841">
@@ -225,25 +272,29 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1607006192760" />
+    <state x="659" y="467" key="NewPhpFileDialog" timestamp="1609413607146">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="659" y="467" key="NewPhpFileDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1609413607146" />
     <state x="341" y="175" key="SettingsEditor" timestamp="1607398638171">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="341" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1607398638171" />
-    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1607753957341">
+    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1609411156838">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1607753957341" />
+    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1609411156838" />
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607050224630">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1607050224630" />
-    <state x="538" y="291" width="618" height="490" key="find.popup" timestamp="1607649965700">
+    <state x="538" y="291" width="618" height="490" key="find.popup" timestamp="1609412472433">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607649965700" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607755804329">
+    <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609412472433" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609413891458">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607755804329" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609413891458" />
   </component>
 </project>

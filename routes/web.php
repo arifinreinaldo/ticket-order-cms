@@ -59,8 +59,23 @@ Route::group([
     Route::post('/mactivity/update/{id}', 'MActivityController@webUpdate');
     Route::post('/mactivity/destroy/{id}', 'MActivityController@webDestroy');
     Route::get('/ajaxmactivity', 'MActivityController@ajaxData')->name('/ajaxmactivity');
+
+    Route::get('/mgame', 'MGameController@webIndex')->name('mgame');
+    Route::get('/mgame/create', 'MGameController@webCreate');
+    Route::post('/mgame/store', 'MGameController@webStore');
+    Route::post('/mgame/update', 'MGameController@webUpdate');
+    Route::post('/mgame/destroy/{id}', 'MGameController@webDestroy');
+    Route::get('/ajaxmgame', 'MGameController@ajaxData')->name('/ajaxmgame');
+    Route::get('/mgame/edit/{id}', 'MGameController@webEdit');
+    Route::post('/mgame/destroy', 'MGameController@webDestroy');
+    Route::post('/mgame/toggle', 'MGameController@webToggle');
 });
 //Route::get('/mmenurole', 'MMenuRoleController@webIndex')->name('mmenurole');
 //Route::post('/mmenurole/store', 'MMenuRoleController@webStore');
 //Route::post('/mmenurole/update/{id}', 'MMenuRoleController@webUpdate');
 //Route::post('/mmenurole/destroy/{id}', 'MMenuRoleController@webDestroy');
+Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
+Route::post('/marticle/store', 'MArticleController@webStore');
+Route::post('/marticle/update/{id}', 'MArticleController@webUpdate');
+Route::post('/marticle/destroy/{id}', 'MArticleController@webDestroy');
+

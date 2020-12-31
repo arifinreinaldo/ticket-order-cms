@@ -101,7 +101,7 @@ class CreateMenuTable extends Migration
         );
         DB::table('menu')->insert(
             array(
-                'menu' => 'Game Management',
+                'menu' => 'Games Management',
                 'alias' => 'mgame'
             )
         );
