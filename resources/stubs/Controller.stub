@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\{{modelName}};
 use DataTables;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class {{modelName}}Controller extends Controller
 {
@@ -61,7 +62,7 @@ class {{modelName}}Controller extends Controller
     {
         $results = DB::table(' AS u')
             ->selectRaw("")
-            ->join(' AS s', 'u.status', '=', 's.id')
+            ->join(' AS s', 'u.status', '=', 's.id');
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
