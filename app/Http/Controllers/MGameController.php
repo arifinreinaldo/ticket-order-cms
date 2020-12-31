@@ -70,8 +70,7 @@ class MGameController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg|max:1024'
         ]);
         //|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000
-        $imagePath = UtilHelper::store(request('image'), 'constant.game_image');
-//        $imagePath = request('image')->store(config('constant.game_image'), 'public');
+        $imagePath = Util::storeFile(request('image'), 'game_image');
         unset($data['image']);
         $data['image'] = $imagePath;
         $data['status'] = '1';
@@ -112,12 +111,9 @@ class MGameController extends Controller
             $oldData->title = $data['title'];
             $oldData->link = $data['link'];
 
-//            $imagePath = request('image')->store(config('constant.game_image'), 'public');
-//            unset($data['image']);
-//            $data['image'] = $imagePath;
             if ($request['image']) {
                 Storage::delete("public/" . $oldData->image);
-                $imagePath = request('image')->store(config('constant.game_image'), 'public');
+                $imagePath = Util::updateFile($oldData->image, request('image'), 'game_image');
                 unset($data['image']);
                 $oldData->image = $imagePath;
             }
@@ -217,6 +213,7 @@ class MGameController extends Controller
             foreach ($ids as $id) {
                 $data = MGame::findOrFail($id);
                 try {
+                    Util::deleteFile($data->image);
                     MGame::destroy($id);
                     MGame::where('order', '>=', $data->order)
                         ->update(['order' => DB::raw('"order" - 1')]);
