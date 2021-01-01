@@ -78,5 +78,14 @@ Route::group([
     Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
     Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
     Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
+
+    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
+    Route::post('/mcalendar/store', 'MCalendarController@webStore');
+    Route::get('/mcalendar/create', 'MCalendarController@webCreate');
+    Route::post('/mcalendar/update', 'MCalendarController@webUpdate');
+    Route::post('/mcalendar/destroy', 'MCalendarController@webDestroy');
+    Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
+    Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
+    Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
 });
 

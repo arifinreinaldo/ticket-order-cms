@@ -43,14 +43,14 @@ class {{modelName}}Controller extends Controller
         return response()->json(${{modelNamePluralLowerCase}});
     }
 
-    public function webUpdate({{modelName}}Request $request, $id)
+    public function webUpdate(Request $request)
     {
         $data = request()->validate([
-
+            'id'=>'required',
         ]);
 
         try{
-            ${{modelNamePluralLowerCase}} = {{modelName}}::findOrFail($id);
+            ${{modelNamePluralLowerCase}} = {{modelName}}::findOrFail($data['id']);
             ${{modelNamePluralLowerCase}}->update($request->all());
         }catch(Exception $e){
             report($e);

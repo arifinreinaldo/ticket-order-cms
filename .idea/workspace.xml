@@ -23,16 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/master/mpromotion_create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CrudGeneratorCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CrudGeneratorCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MGameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MGameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/stubs/Blade.stub" beforeDir="false" afterPath="$PROJECT_DIR$/resources/stubs/Blade.stub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/stubs/Controller.stub" beforeDir="false" afterPath="$PROJECT_DIR$/resources/stubs/Controller.stub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mgame.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgame.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/muser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/muser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,10 +180,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/master" />
+      <recent name="$PROJECT_DIR$/public/assets/js" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/public/datatable" />
-      <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -289,13 +285,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1607050224630" />
-    <state x="538" y="291" width="618" height="490" key="find.popup" timestamp="1609412472433">
+    <state x="538" y="291" width="933" height="490" key="find.popup" timestamp="1609509219087">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="538" y="291" width="618" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609412472433" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609425398859">
+    <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609509219087" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609509992391">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609425398859" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609509992391" />
   </component>
 </project>
