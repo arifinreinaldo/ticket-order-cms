@@ -5,13 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class MArticle extends Model
+class MBanner extends Model
 {
     use  LogsActivity;
 
-    protected $table = 'articles';
-    protected static $logAttributes = ['title', 'image', 'content', 'status'];
-    protected static $logName = 'article';
+    protected $table = 'banners';
+    protected static $logAttributes = ['title', 'image', 'link', 'order', 'status'];
+    protected static $logName = 'banner';
     protected static $logOnlyDirty = true;
     protected $guarded = ['id'];
 

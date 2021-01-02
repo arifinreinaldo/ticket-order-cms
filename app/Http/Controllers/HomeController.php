@@ -33,6 +33,17 @@ class HomeController extends Controller
             ->where('user_role_id', '=', Auth::user()->role)
             ->get();
         session(['menu' => $accesses]);
+//        config([
+//            'mail.driver' => 'smtp',
+//            'mail.host' => 'smtp.gmail.com',
+//            'mail.port' => 587,
+//            'mail.encryption' => 'tls',
+//            'mail.username' => 'emailspamrei@gmail.com',
+//            'mail.password' => '4llhailtheK1ng',
+//            'mail.from' => ['address' => 'emailspamrei@gmail.com', 'name' => 'Trans CMS']
+//        ]);
+//        config(['mail.from' => ['address' => 'emailspamrei@gmail.com', 'name' => 'Trans CMS']]);
+//        dd(config('mail'));
         /*
         $api = env('TRANS_API', '');
         $key = env('INTERFACE_KEY', '');

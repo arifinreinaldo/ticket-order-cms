@@ -3,84 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Util;
-use App\MPromotion;
+use App\MBanner;
 use DataTables;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MPromotionController extends Controller
+class MBannerController extends Controller
 {
     //web function
     public function webIndex()
     {
-        return view('master.mpromotion');
+        return view('master.mbanner');
     }
 
     public function webCreate()
     {
-        return view('master.mpromotion_create');
+        $size = MBanner::all()->count() + 1;
+        return view('master.mbanner_create', compact('size'));
     }
 
     public function webStore(Request $request)
     {
         $data = request()->validate([
-            'promo_name' => 'required',
-            'promo_image' => 'required|image|mimes:jpg,png,jpeg|max:1024',
+            'title' => 'required|unique:games',
+            'order' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg|max:1024'
         ]);
-
-        $imagePath = Util::storeFile(request('promo_image'), 'promo_image');
-        unset($data['promo_image']);
-        $data['promo_image'] = $imagePath;
-        $data['status'] = '1';
-        $data['product_id'] = '1';
+        $data['link'] = '1';
         try {
-            $mpromotions = MPromotion::create($data);
+            $imagePath = Util::storeFile(request('image'), 'banner_image');
+            unset($data['image']);
+            $data['image'] = $imagePath;
+            $data['status'] = '1';
+            $mbanners = MBanner::create($data);
         } catch (Exception $e) {
             report($e);
-            return redirect("/mpromotion")->with('failed', 'Failed insert data.');
+            return redirect("/mbanner")->with('failed', 'Failed insert data.');
         }
-        return redirect("/mpromotion")->with('success', 'Success insert data.');
+        return redirect("/mbanner")->with('success', 'Success insert data.');
     }
 
     public function webShow($id)
     {
 
-        $mpromotions = MPromotion::findOrFail($id);
+        $mbanners = MBanner::findOrFail($id);
 
-        return response()->json($mpromotions);
+        return response()->json($mbanners);
     }
 
     public function webUpdate(Request $request)
     {
         $data = request()->validate([
             'id' => 'required',
-            'promo_name' => 'required',
-            'promo_image' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
         ]);
 
         try {
-            $oldData = MPromotion::findOrFail($data['id']);
-            $oldData->promo_name = $data['promo_name'];
-            if ($request['promo_image']) {
-                $imagePath = Util::updateFile($oldData->promo_image, request('promo_image'), 'promo_image');
-                unset($data['promo_image']);
-                $oldData->promo_image = $imagePath;
-            }
-            $oldData->save();
+            $mbanners = MBanner::findOrFail($data['id']);
+            $mbanners->update($request->all());
         } catch (Exception $e) {
             report($e);
-            return redirect("/mpromotion")->with('failed', 'Failed update data.');
+            return redirect("/mbanner")->with('failed', 'Failed update data.');
         }
-        return redirect("/mpromotion")->with('success', 'Success update data.');
+        return redirect("/mbanner")->with('success', 'Success update data.');
     }
 
     public function ajaxData(Request $request)
     {
-        $results = MPromotion::select('u.id as id_data', 'u.promo_name', 'u.promo_image', 'name', 'u.product_id')
-            ->from('promos as u')
+        $results = MBanner::select("u.id as id_data", 'u.title', 'u.status', 'u.updated_at', 's.name', 'u.image','u.order')
+            ->from('banners as u')
             ->join('status AS s', 'u.status', '=', 's.id');
-
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
@@ -90,15 +82,14 @@ class MPromotionController extends Controller
                     return $btn;
                 })
                 ->escapeColumns('checkbox')
-                ->editColumn("promo_name", function ($row) {
-                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id_data'>$row->promo_name</span>";
+                ->editColumn("title", function ($row) {
+                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id_data'>$row->title</span>";
                 })
-                ->escapeColumns('promo_name')
-                ->editColumn("promo_image", function ($row) {
+                ->escapeColumns('title')
+                ->editColumn("image", function ($row) {
                     $url = $row->getImage();
                     return "<img class='img-fluid img-thumbnail' src='$url'/>";
                 })
-                ->escapeColumns('promo_image')
                 ->make(true);
         }
     }
@@ -106,11 +97,12 @@ class MPromotionController extends Controller
     public function webEdit($id)
     {
         try {
-            $data = MPromotion::findOrFail($id);
-            return view('master.mpromotion_create', compact('data'));
+            $data = MBanner::findOrFail($id);
+            $size = MBanner::all()->count();
+            return view('master.mbanner_create', compact('data', 'size'));
         } catch (ModelNotFoundException $ex) {
             report($ex);
-            return redirect("/mpromotion")->with('failed', 'Data Not found');
+            return redirect("/mbanner")->with('failed', 'Data Not found');
         }
     }
 
@@ -123,20 +115,20 @@ class MPromotionController extends Controller
             return $value != "";
         });
         try {
-            $rst = MPromotion::whereIn('id', $ids)->get();
+            $rst = MBanner::whereIn('id', $ids)->get();
             foreach ($rst as $item) {
                 $item->status = $request['state'];
                 $item->save();
             }
             if ($request['state'] == '1') {
-                return redirect("/mpromotion")->with('success', 'Data has been activated');
+                return redirect("/mbanner")->with('success', 'Data has been activated');
             } else if ($request['state'] == '2') {
-                return redirect("/mpromotion")->with('success', 'Data has been deactivated');
+                return redirect("/mbanner")->with('success', 'Data has been deactivated');
             }
 
         } catch (\Exception $exception) {
             report($exception);
-            return redirect("/mpromotion")->with('failed', 'Failed to update role user(s)');
+            return redirect("/mbanner")->with('failed', 'Failed to update role user(s)');
         }
     }
 
@@ -150,19 +142,21 @@ class MPromotionController extends Controller
         });
         try {
             foreach ($ids as $id) {
-                $data = MPromotion::findOrFail($id);
+                $data = MBanner::findOrFail($id);
                 try {
                     Util::deleteFile($data->image);
-                    MPromotion::destroy($id);
+                    MBanner::destroy($id);
+                    MBanner::where('order', '>=', $data->order)
+                        ->update(['order' => DB::raw('"order" - 1')]);
                 } catch (QueryException $ex) {
                     report($ex);
                 }
             }
-            return redirect("/mpromotion")->with('success', 'Data has been deleted');
+            return redirect("/mbanner")->with('success', 'Data has been deleted');
 
         } catch (\Exception $exception) {
             report($exception);
-            return redirect("/mpromotion")->with('failed', 'Failed to delete role(s)');
+            return redirect("/mbanner")->with('failed', 'Failed to delete role(s)');
         }
     }
 }

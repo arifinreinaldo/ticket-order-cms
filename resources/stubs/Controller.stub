@@ -61,20 +61,20 @@ class {{modelName}}Controller extends Controller
 
     public function ajaxData(Request $request)
     {
-        $results = DB::table(' AS u')
-            ->selectRaw("")
-            ->join(' AS s', 'u.status', '=', 's.id');
+        $results = {{modelName}}::select("u.id as id_data", 'u.title')
+            ->from('data as u')
+            ->join('status AS s', 'u.status', '=', 's.id');
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
                 ->addColumn("checkbox", function ($row) {
                     $btn = "";
-                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id'/>";
+                    $btn .= "<input type='checkbox' class='check-control' userid='$row->id_data'/>";
                     return $btn;
                 })
                 ->escapeColumns('checkbox')
                 ->editColumn("name", function ($row) {
-                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id'>$row->name</span>";
+                    return "<span class='btn-edit text-c-blue pointer' userid='$row->id_data'>$row->name</span>";
                 })
                 ->escapeColumns('name')
                 ->addColumn("action", function ($row) {
@@ -125,9 +125,9 @@ class {{modelName}}Controller extends Controller
                 $item->save();
             }
             if ($request['state'] == '1') {
-                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been activated');
+                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data has been activated');
             } else if ($request['state'] == '2') {
-                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been deactivated');
+                return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data has been deactivated');
             }
 
         } catch (\Exception $exception) {
@@ -156,7 +156,7 @@ class {{modelName}}Controller extends Controller
                     report($ex);
                 }
             }
-            return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data(s) has been deleted');
+            return redirect("/{{modelNameSingularLowerCase}}")->with('success', 'Data has been deleted');
 
         } catch (\Exception $exception) {
             report($exception);

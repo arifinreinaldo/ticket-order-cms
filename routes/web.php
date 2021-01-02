@@ -87,5 +87,22 @@ Route::group([
     Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
     Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
     Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
-});
 
+    Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
+    Route::post('/marticle/store', 'MArticleController@webStore');
+    Route::get('/marticle/create', 'MArticleController@webCreate');
+    Route::post('/marticle/update', 'MArticleController@webUpdate');
+    Route::post('/marticle/destroy', 'MArticleController@webDestroy');
+    Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
+    Route::post('/marticle/toggle', 'MArticleController@webToggle');
+    Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
+
+    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
+    Route::post('/mbanner/store', 'MBannerController@webStore');
+    Route::get('/mbanner/create', 'MBannerController@webCreate');
+    Route::post('/mbanner/update', 'MBannerController@webUpdate');
+    Route::post('/mbanner/destroy', 'MBannerController@webDestroy');
+    Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
+    Route::post('/mbanner/toggle', 'MBannerController@webToggle');
+    Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
+});

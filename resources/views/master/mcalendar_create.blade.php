@@ -44,7 +44,11 @@
                             <input type="file" class="form-control-file" id="image" name="event_banner_image">
                         </div>
                         <div class="form-group">
-                            <textarea id="wsiwyg" name="event_content">{{$data->event_content}}</textarea>
+                            <textarea id="wsiwyg" name="event_content">
+                                @if (!empty($data))
+                                    {{$data->event_content}}
+                                @endif
+                            </textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,7 +73,7 @@
                 width: 700,
                 height: 350,
                 plugins: [
-                    'advlist autolink link image lists charmap print preview hr ',
+                    'advlist autolink link lists charmap print preview hr ',
                     'searchreplace wordcount visualblocks visualchars code fullscreen',
                     ' paste'
                 ],
@@ -86,7 +90,6 @@
                 // menubar: 'file edit view insert format tools table help',
                 content_css: 'css/content.css'
             });
-            $('#order').val($('#order_value').val());
         });
     </script>
 @endsection

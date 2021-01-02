@@ -457,7 +457,7 @@
                 }
             });
             if (isEmpty) {
-                showMessage("Please Select One User");
+                showMessage("Please Select One Data");
             }
             return ids;
         }

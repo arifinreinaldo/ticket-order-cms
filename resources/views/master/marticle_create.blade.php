@@ -4,7 +4,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{url('/mgame')}}">
+                <a href="{{url('/marticle')}}">
                     <button type="button" class="btn btn-warning" title="">Back</button>
                 </a>
             </div>
@@ -14,9 +14,9 @@
         <div class="card">
             <div class="card-header">
                 @if (!empty($data))
-                    <h5>Edit Game</h5>
+                    <h5>Edit Article</h5>
                 @else
-                    <h5>Create New Game</h5>
+                    <h5>Create New Article</h5>
                 @endif
             </div>
             <div class="card-block table-border-style">
@@ -25,11 +25,11 @@
                 @else
                     @php($type= 'update')
                 @endif
-                <form method="POST" action="{{url('/mgame')}}/{{$type}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/marticle')}}/{{$type}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Game Title</label>
+                            <label>Article Title</label>
                             <input type="text" class="form-control" name="title"
                                    @if (!empty($data))
                                    value="{{$data->title}}"
@@ -37,36 +37,14 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label for="image">Game Cover Image( Resolution 100px x 100px )</label>
+                            <label for="image">Article Image( Resolution 100px x 100px )</label>
                             <input type="file" class="form-control-file" id="image" name="image">
 
                         </div>
-
                         <div class="form-group">
-                            <label>Game Webview Link</label>
-                            <input type="text" class="form-control" name="link"
-                                   @if (!empty($data))
-                                   value="{{$data->link}}"
-                                @endif
-                            >
-                        </div>
-                        <div class="form-group">
-                            <label>Game Order ID</label>
-                            <select class="form-control selectpicker"
-                                    id="order"
-                                    name="order"
-                                    data-live-search="true">
-                                <option value="">Select Order</option>
-                                @for ($i = 1; $i <= $size; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
-                                @endfor
-                                @if(empty($data))
-                                    @php($value= $size)
-                                @else
-                                    @php($value = $data->order)
-                                @endif
-                                <input type="hidden" id="order_value" value="{{$value}}">
-                            </select>
+                            <label for="image">Article Body</label>
+                            <textarea id="wsiwyg" name="content">
+                        @if (!empty($data)){{$data->content}}@endif</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,10 +57,37 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+
+@section('injectscript')
+    <script src="{{url('assets/js/tinymce/tinymce.min.js')}}"></script>
     <script>
         $(document).ready(function () {
+            tinymce.init({
+                selector: '#wsiwyg',
+                width: 700,
+                height: 350,
+                plugins: [
+                    'advlist autolink link lists charmap print preview hr ',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen',
+                    ' paste'
+                ],
+                // plugins: [
+                //     'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                //     'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                //     'table emoticons template paste help'
+                // ],
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist outdent indent | link | print preview media fullpage | ' +
+                    'forecolor backcolor emoticons | help',
+                menu: {},
+                menubar: 'file edit insert format ',
+                // menubar: 'file edit view insert format tools table help',
+                content_css: 'css/content.css'
+            });
             $('#order').val($('#order_value').val());
         });
     </script>
 @endsection
-

@@ -63,19 +63,19 @@ class MCalendarController extends Controller
         $data = request()->validate([
             'id' => 'required',
             'event_title' => 'required',
-            'event_content' => 'required|max:50',
+            'event_content' => 'required|max:3000',
         ]);
         try {
             $oldData = MCalendar::findOrFail($data['id']);
             $oldData->event_title = $data['event_title'];
             $oldData->event_content = $data['event_content'];
             if ($request['event_cover_image']) {
-                $imagePath = Util::updateFile($oldData->event_cover_image, request('image'), 'event_cover_image');
+                $imagePath = Util::updateFile($oldData->event_cover_image, request('event_cover_image'), 'event_cover_image');
                 unset($data['event_cover_image']);
                 $oldData->event_cover_image = $imagePath;
             }
             if ($request['event_banner_image']) {
-                $imagePath = Util::updateFile($oldData->event_banner_image, request('image'), 'event_banner_image');
+                $imagePath = Util::updateFile($oldData->event_banner_image, request('event_banner_image'), 'event_banner_image');
                 unset($data['event_banner_image']);
                 $oldData->event_banner_image = $imagePath;
             }
@@ -140,9 +140,9 @@ class MCalendarController extends Controller
                 $item->save();
             }
             if ($request['state'] == '1') {
-                return redirect("/mcalendar")->with('success', 'Data(s) has been activated');
+                return redirect("/mcalendar")->with('success', 'Data has been activated');
             } else if ($request['state'] == '2') {
-                return redirect("/mcalendar")->with('success', 'Data(s) has been deactivated');
+                return redirect("/mcalendar")->with('success', 'Data has been deactivated');
             }
 
         } catch (\Exception $exception) {
@@ -160,7 +160,16 @@ class MCalendarController extends Controller
             return $value != "";
         });
         try {
-            MCalendar::destroy($ids);
+            foreach ($ids as $id) {
+                $data = MCalendar::findOrFail($id);
+                try {
+                    Util::deleteFile($data->event_cover_image);
+                    Util::deleteFile($data->event_banner_image);
+                    MCalendar::destroy($id);
+                } catch (QueryException $ex) {
+                    report($ex);
+                }
+            }
             return redirect("/mcalendar")->with('success', 'Data has been deleted');
 
         } catch (\Exception $exception) {

@@ -4,7 +4,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{url('/mgame')}}">
+                <a href="{{url('/mbanner')}}">
                     <button type="button" class="btn btn-warning" title="">Back</button>
                 </a>
             </div>
@@ -14,9 +14,9 @@
         <div class="card">
             <div class="card-header">
                 @if (!empty($data))
-                    <h5>Edit Game</h5>
+                    <h5>Edit Banner</h5>
                 @else
-                    <h5>Create New Game</h5>
+                    <h5>Create New Banner</h5>
                 @endif
             </div>
             <div class="card-block table-border-style">
@@ -25,11 +25,11 @@
                 @else
                     @php($type= 'update')
                 @endif
-                <form method="POST" action="{{url('/mgame')}}/{{$type}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/mbanner')}}/{{$type}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Game Title</label>
+                            <label>Banner Title</label>
                             <input type="text" class="form-control" name="title"
                                    @if (!empty($data))
                                    value="{{$data->title}}"
@@ -37,13 +37,13 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label for="image">Game Cover Image( Resolution 100px x 100px )</label>
+                            <label for="image">Upload Banner Image</label>
                             <input type="file" class="form-control-file" id="image" name="image">
 
                         </div>
 
                         <div class="form-group">
-                            <label>Game Webview Link</label>
+                            <label>Link</label>
                             <input type="text" class="form-control" name="link"
                                    @if (!empty($data))
                                    value="{{$data->link}}"
@@ -51,7 +51,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label>Game Order ID</label>
+                            <label>Order ID</label>
                             <select class="form-control selectpicker"
                                     id="order"
                                     name="order"

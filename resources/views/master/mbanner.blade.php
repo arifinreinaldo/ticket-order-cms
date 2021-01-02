@@ -20,7 +20,7 @@
     {{$update = ''}}
     {{$delete = ''}}
     @foreach (session('menu') as $menu)
-        @if($menu->alias=='marticle')
+        @if($menu->alias=='mbanner')
             @php($create = $menu->create_access)
             @php($update = $menu->update_access)
             @php($delete = $menu->delete_access)
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-header">
                     @if($create=='X')
-                        <a href="{{url('/marticle/create')}}">
+                        <a href="{{url('/mbanner/create')}}">
                             <button type="button" class="btn btn-primary" title="">Create</button>
                         </a>
                     @endif
@@ -60,7 +60,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5>Articles Management</h5>
+                <h5>Banners Management</h5>
             </div>
             <div class="card-block table-border-style">
                 <div class="table-responsive">
@@ -69,9 +69,10 @@
                         <tr>
                             <th></th>
                             <th>ID</th>
-                            <th>Article Title</th>
-                            <th>Branch</th>
-                            <th>Date Published</th>
+                            <th>Banner Name</th>
+                            <th>Banner Preview</th>
+                            <th>Link to</th>
+                            <th>Order ID</th>
                             <th>Status</th>
                         </tr>
                         </thead>
@@ -94,13 +95,14 @@
             table = $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{URL::to('/marticleajax')}}",
+                ajax: "{{URL::to('/mbannerajax')}}",
                 columns: [
                     {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'title', name: 'u.title'},
+                    {data: 'image', name: 'u.image', orderable: false, searchable: false},
                     {data: 'title', name: 'u.title'},
-                    {data: 'updated_at', name: 'u.updated_at'},
+                    {data: 'order', name: 'u.order'},
                     {data: 'name', name: 's.name'},
                     // {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
@@ -112,13 +114,13 @@
         $(document).on("click", ".btn-activate", function () {
             var userid = $(this).attr('userid');
             $('#userid_param').val(userid);
-            $('#actionForm').attr('action', '{{url('/marticle/toggle')}}');
+            $('#actionForm').attr('action', '{{url('/mbanner/toggle')}}');
             $('#actionForm').submit();
         });
         @if($update=='X')
         $(document).on("click", ".btn-edit", function () {
             var userid = $(this).attr('userid');
-            window.location.href = '/marticle/edit/' + userid;
+            window.location.href = '/mbanner/edit/' + userid;
         });
         @endif
         $(document).on("click", "#all_check", function () {
@@ -132,7 +134,7 @@
             if (ids != "") {
                 $('#state_param').val(1);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/marticle/toggle')}}');
+                $('#actionForm').attr('action', '{{url('/mbanner/toggle')}}');
                 showModal("Activate Confirmation", "Are you sure want to activate these users?");
             }
         });
@@ -141,7 +143,7 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/marticle/toggle')}}');
+                $('#actionForm').attr('action', '{{url('/mbanner/toggle')}}');
                 // $('#actionForm').submit();
                 showModal("Deactivate Confirmation", "Are you sure want to deactivate these users?");
             }
@@ -151,7 +153,7 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/marticle/destroy')}}');
+                $('#actionForm').attr('action', '{{url('/mbanner/destroy')}}');
                 showModal("Delete Confirmation", "Are you sure want to delete these users?");
             }
         });
