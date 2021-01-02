@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -29,7 +30,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => 'hoi',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +57,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => 'jpoi',
+        'name' => env('APP_NAME', 'Trans Entertainment'),
     ],
 
     /*
@@ -84,9 +85,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => 'jpo',
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => 'po',
 
     /*
     |--------------------------------------------------------------------------

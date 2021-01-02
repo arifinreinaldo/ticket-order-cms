@@ -23,22 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/master/mbanner_create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/MSmtpConfig.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/master/mconfiguration_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MArticleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MCalendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MCalendarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MPromotionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MPromotionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MArticle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_30_134831_create_articles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_30_134831_create_articles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/stubs/Controller.stub" beforeDir="false" afterPath="$PROJECT_DIR$/resources/stubs/Controller.stub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/marticle.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,18 +171,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/master" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/public/assets/js" />
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/image" />
       <recent name="$PROJECT_DIR$/public/assets/images" />
       <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$/public" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/master" />
-      <recent name="$PROJECT_DIR$/public/assets/js" />
-      <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/public/datatable" />
     </key>
   </component>
   <component name="RunManager">
@@ -232,6 +221,8 @@
       <workItem from="1609084575402" duration="1199000" />
       <workItem from="1609244305236" duration="4569000" />
       <workItem from="1609405115218" duration="8009000" />
+      <workItem from="1609586690113" duration="2870000" />
+      <workItem from="1609589660263" duration="338000" />
     </task>
     <servers />
   </component>
@@ -295,13 +286,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1607050224630" />
-    <state x="538" y="291" width="933" height="490" key="find.popup" timestamp="1609574856470">
+    <state x="538" y="291" width="933" height="490" key="find.popup" timestamp="1609574866431">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609574856470" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609574767745">
+    <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609574866431" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609589730853">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609574767745" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609589730853" />
   </component>
 </project>
