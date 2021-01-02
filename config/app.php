@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         App\Providers\UtilProvider::class,
+        App\Providers\MailConfigServiceProvider::class,
     ],
 
     /*

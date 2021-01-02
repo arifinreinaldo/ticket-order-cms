@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Datta Able - Reset password</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -18,13 +18,13 @@
     <meta name="author" content="CodedThemes"/>
 
     <!-- Favicon icon -->
-    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{url('image/ic_logo.svg')}}" type="image/x-icon">
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{url('assets/fonts/fontawesome/css/fontawesome-all.min.css')}}">
     <!-- animation css -->
-    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link rel="stylesheet" href="{{url('assets/plugins/animation/css/animate.min.css')}}">
     <!-- vendor css -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
 
 </head>
 
@@ -55,7 +55,8 @@
                     @csrf
                     <div class="input-group mb-3">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                               name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                               name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                               placeholder="Email">
                     </div>
                     @if(session('failed'))
 
