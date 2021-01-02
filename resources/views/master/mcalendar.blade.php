@@ -144,3 +144,15 @@
     </script>
 @endsection
 
+@section('injectstyle')
+    @if($update=='')
+        <style>
+            .text-c-blue.pointer {
+                color: #888;
+                cursor: auto !important;
+            }
+        </style>
+    @endif
+@endsection
+
+

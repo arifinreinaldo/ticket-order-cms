@@ -112,10 +112,12 @@
             $('#actionForm').attr('action', '{{url('/mrole/toggle')}}');
             $('#actionForm').submit();
         });
+        @if($update=='X')
         $(document).on("click", ".btn-edit", function () {
             var userid = $(this).attr('userid');
             window.location.href = '/mrole/edit/' + userid;
         });
+        @endif
         $(document).on("click", "#actActivate", function () {
             var ids = checkEmpty();
             if (ids != "") {
@@ -149,5 +151,16 @@
             $('#actionForm').submit();
         });
     </script>
+@endsection
+
+@section('injectstyle')
+    @if($update=='')
+        <style>
+            .text-c-blue.pointer {
+                color: #888;
+                cursor: auto !important;
+            }
+        </style>
+    @endif
 @endsection
 

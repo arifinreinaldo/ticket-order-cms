@@ -97,6 +97,7 @@
                                    @if (!empty($data))
                                    value="{{$data->smtp_host}}"
                                 @endif
+                                {{ $update === "X" ? "" : "disabled" }}
                             >
                         </div>
                         <div class="form-group">
@@ -105,6 +106,7 @@
                                    @if (!empty($data))
                                    value="{{$data->smtp_username}}"
                                 @endif
+                                {{ $update === "X" ? "" : "disabled" }}
                             >
                         </div>
                         <div class="form-group">
@@ -113,11 +115,14 @@
                                    @if (!empty($data))
                                    value="{{$data->smtp_password}}"
                                 @endif
+                                {{ $update === "X" ? "" : "disabled" }}
                             >
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        @if($update=='X')
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        @endif
                         @if (!empty($data))
                             <input type="hidden" name="id" value="{{$data->id}}">
                         @endif
@@ -201,5 +206,15 @@
             $('#actionForm').submit();
         });
     </script>
+@endsection
+@section('injectstyle')
+    @if($update=='')
+        <style>
+            .text-c-blue.pointer {
+                color: #888;
+                cursor: auto !important;
+            }
+        </style>
+    @endif
 @endsection
 

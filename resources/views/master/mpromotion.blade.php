@@ -60,7 +60,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5>Games Management</h5>
+                <h5>Promotion Management</h5>
             </div>
             <div class="card-block table-border-style">
                 <div class="table-responsive">
@@ -159,5 +159,17 @@
             $('#actionForm').submit();
         });
     </script>
+@endsection
+
+
+@section('injectstyle')
+    @if($update=='')
+        <style>
+            .text-c-blue.pointer {
+                color: #888;
+                cursor: auto !important;
+            }
+        </style>
+    @endif
 @endsection
 

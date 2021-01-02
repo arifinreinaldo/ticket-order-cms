@@ -33,6 +33,7 @@ class HomeController extends Controller
             ->where('user_role_id', '=', Auth::user()->role)
             ->get();
         session(['menu' => $accesses]);
+
 //        config([
 //            'mail.driver' => 'smtp',
 //            'mail.host' => 'smtp.gmail.com',

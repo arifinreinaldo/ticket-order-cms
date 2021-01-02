@@ -20,6 +20,12 @@
     <link href="{{url('/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <script src="{{url('/datatable/jquery.dataTables.min.js')}}" defer></script>
     <script src="{{url('/datatable/dataTables.bootstrap4.min.js')}}" defer></script>
+
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
     @yield('injectstyle')
 </head>
 <body>
@@ -463,11 +469,6 @@
         }
     </script>
     @yield('injectscript')
-    <style>
-        .pointer {
-            cursor: pointer;
-        }
-    </style>
 </div>
 </body>
 </html>

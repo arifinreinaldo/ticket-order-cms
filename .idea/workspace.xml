@@ -24,8 +24,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/stubs/Blade.stub" beforeDir="false" afterPath="$PROJECT_DIR$/resources/stubs/Blade.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/marticle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/marticle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mbanner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mbanner.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mcalendar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mcalendar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mgame.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgame.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mpromotion.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mpromotion.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mrole.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/muser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/muser.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +228,7 @@
       <workItem from="1609244305236" duration="4569000" />
       <workItem from="1609405115218" duration="8009000" />
       <workItem from="1609586690113" duration="2870000" />
-      <workItem from="1609589660263" duration="1109000" />
+      <workItem from="1609589660263" duration="3471000" />
     </task>
     <servers />
   </component>
@@ -287,9 +296,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609574866431" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609591250959">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609594144791">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609591250959" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609594144791" />
   </component>
 </project>
