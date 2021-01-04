@@ -70,49 +70,49 @@ Route::group([
     Route::post('/mgame/destroy', 'MGameController@webDestroy');
     Route::post('/mgame/toggle', 'MGameController@webToggle');
 
-    Route::get('/mpromotion', 'MPromotionController@webIndex')->name('mpromotion');
-    Route::post('/mpromotion/store', 'MPromotionController@webStore');
-    Route::get('/mpromotion/create', 'MPromotionController@webCreate');
-    Route::post('/mpromotion/update', 'MPromotionController@webUpdate');
-    Route::post('/mpromotion/destroy', 'MPromotionController@webDestroy');
-    Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
-    Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
-    Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
-
-    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
-    Route::post('/mcalendar/store', 'MCalendarController@webStore');
-    Route::get('/mcalendar/create', 'MCalendarController@webCreate');
-    Route::post('/mcalendar/update', 'MCalendarController@webUpdate');
-    Route::post('/mcalendar/destroy', 'MCalendarController@webDestroy');
-    Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
-    Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
-    Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
-
-    Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
-    Route::post('/marticle/store', 'MArticleController@webStore');
-    Route::get('/marticle/create', 'MArticleController@webCreate');
-    Route::post('/marticle/update', 'MArticleController@webUpdate');
-    Route::post('/marticle/destroy', 'MArticleController@webDestroy');
-    Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
-    Route::post('/marticle/toggle', 'MArticleController@webToggle');
-    Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
-
-    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
-    Route::post('/mbanner/store', 'MBannerController@webStore');
-    Route::get('/mbanner/create', 'MBannerController@webCreate');
-    Route::post('/mbanner/update', 'MBannerController@webUpdate');
-    Route::post('/mbanner/destroy', 'MBannerController@webDestroy');
-    Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
-    Route::post('/mbanner/toggle', 'MBannerController@webToggle');
-    Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
-
-    Route::get('/mconfiguration', 'MConfigurationController@webIndex')->name('mconfiguration');
-    Route::post('/mconfiguration/store', 'MConfigurationController@webStore');
-    Route::get('/mconfiguration/create', 'MConfigurationController@webCreate');
-    Route::post('/mconfiguration/update', 'MConfigurationController@webUpdate');
-    Route::post('/mconfiguration/destroy', 'MConfigurationController@webDestroy');
-    Route::get('/mconfiguration/edit/{id}', 'MConfigurationController@webEdit');
-    Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
-    Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
-    Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
+//    Route::get('/mpromotion', 'MPromotionController@webIndex')->name('mpromotion');
+//    Route::post('/mpromotion/store', 'MPromotionController@webStore');
+//    Route::get('/mpromotion/create', 'MPromotionController@webCreate');
+//    Route::post('/mpromotion/update', 'MPromotionController@webUpdate');
+//    Route::post('/mpromotion/destroy', 'MPromotionController@webDestroy');
+//    Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
+//    Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
+//    Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
+//
+//    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
+//    Route::post('/mcalendar/store', 'MCalendarController@webStore');
+//    Route::get('/mcalendar/create', 'MCalendarController@webCreate');
+//    Route::post('/mcalendar/update', 'MCalendarController@webUpdate');
+//    Route::post('/mcalendar/destroy', 'MCalendarController@webDestroy');
+//    Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
+//    Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
+//    Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
+//
+//    Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
+//    Route::post('/marticle/store', 'MArticleController@webStore');
+//    Route::get('/marticle/create', 'MArticleController@webCreate');
+//    Route::post('/marticle/update', 'MArticleController@webUpdate');
+//    Route::post('/marticle/destroy', 'MArticleController@webDestroy');
+//    Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
+//    Route::post('/marticle/toggle', 'MArticleController@webToggle');
+//    Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
+//
+//    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
+//    Route::post('/mbanner/store', 'MBannerController@webStore');
+//    Route::get('/mbanner/create', 'MBannerController@webCreate');
+//    Route::post('/mbanner/update', 'MBannerController@webUpdate');
+//    Route::post('/mbanner/destroy', 'MBannerController@webDestroy');
+//    Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
+//    Route::post('/mbanner/toggle', 'MBannerController@webToggle');
+//    Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
+//
+//    Route::get('/mconfiguration', 'MConfigurationController@webIndex')->name('mconfiguration');
+//    Route::post('/mconfiguration/store', 'MConfigurationController@webStore');
+//    Route::get('/mconfiguration/create', 'MConfigurationController@webCreate');
+//    Route::post('/mconfiguration/update', 'MConfigurationController@webUpdate');
+//    Route::post('/mconfiguration/destroy', 'MConfigurationController@webDestroy');
+//    Route::get('/mconfiguration/edit/{id}', 'MConfigurationController@webEdit');
+//    Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
+//    Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
+//    Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
 });
