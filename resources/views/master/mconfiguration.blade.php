@@ -92,16 +92,7 @@
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>SMTP Host</label>
-                            <input type="text" class="form-control" name="smtp_host"
-                                   @if (!empty($data))
-                                   value="{{$data->smtp_host}}"
-                                @endif
-                                {{ $update === "X" ? "" : "disabled" }}
-                            >
-                        </div>
-                        <div class="form-group">
-                            <label>SMTP Username</label>
+                            <label>Email Name</label>
                             <input type="text" class="form-control" name="smtp_username"
                                    @if (!empty($data))
                                    value="{{$data->smtp_username}}"
@@ -110,10 +101,20 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label>SMTP Password</label>
+                            <label>Email Password</label>
                             <input type="password" class="form-control" name="smtp_password"
                                    @if (!empty($data))
                                    value="{{$data->smtp_password}}"
+                                @endif
+                                {{ $update === "X" ? "" : "disabled" }}
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Host</label>
+                            <input type="text" class="form-control" name="smtp_host"
+                                   @if (!empty($data))
+                                   value="{{$data->smtp_host}}"
                                 @endif
                                 {{ $update === "X" ? "" : "disabled" }}
                             >
