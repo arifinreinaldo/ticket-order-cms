@@ -19,4 +19,9 @@ class MArticle extends Model
     {
         return ($this->image) ? asset('/storage/' . $this->image) : '/svg/icon.svg';
     }
+
+    public function getBanner()
+    {
+        return ($this->banner) ? asset('/storage/' . $this->banner) : '/svg/icon.svg';
+    }
 }

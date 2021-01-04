@@ -37,10 +37,16 @@
                             >
                         </div>
                         <div class="form-group">
+                            @if(!empty($data))
+                                <img class='img-fluid img-thumbnail' src='{{$data->getBanner()}}'
+                            @endif
                             <label for="image">Article Banner ( Resolution 100px x 100px )</label>
                             <input type="file" class="form-control-file" id="banner" name="banner">
                         </div>
                         <div class="form-group">
+                            @if(!empty($data))
+                                <img class='img-fluid img-thumbnail' src='{{$data->getImage()}}'
+                            @endif
                             <label for="image">Article Image ( Resolution 100px x 100px )</label>
                             <input type="file" class="form-control-file" id="image" name="image">
                         </div>

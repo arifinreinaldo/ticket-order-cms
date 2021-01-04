@@ -36,10 +36,16 @@
                             >
                         </div>
                         <div class="form-group">
+                            @if(!empty($data))
+                                <img class='img-fluid img-thumbnail' src='{{$data->getCoverImage()}}'
+                            @endif
                             <label for="image">Calendar Event Cover Image (Resolution 100px x 100px)</label>
                             <input type="file" class="form-control-file" id="image" name="event_cover_image">
                         </div>
                         <div class="form-group">
+                            @if(!empty($data))
+                                <img class='img-fluid img-thumbnail' src='{{$data->getBannerImage()}}'
+                            @endif
                             <label for="image">Calendar Event Banner Image (Resolution 100px x 100px)</label>
                             <input type="file" class="form-control-file" id="image" name="event_banner_image">
                         </div>

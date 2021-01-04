@@ -14,4 +14,14 @@ class MCalendar extends Model
     protected static $logName = 'event';
     protected static $logOnlyDirty = true;
     protected $guarded = ['id'];
+
+    public function getCoverImage()
+    {
+        return ($this->event_cover_image) ? asset('/storage/' . $this->event_cover_image) : '/svg/icon.svg';
+    }
+
+    public function getBannerImage()
+    {
+        return ($this->event_banner_image) ? asset('/storage/' . $this->event_banner_image) : '/svg/icon.svg';
+    }
 }

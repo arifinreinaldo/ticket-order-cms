@@ -105,14 +105,14 @@ Route::group([
     Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
     Route::post('/mbanner/toggle', 'MBannerController@webToggle');
     Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
-//
-//    Route::get('/mconfiguration', 'MConfigurationController@webIndex')->name('mconfiguration');
-//    Route::post('/mconfiguration/store', 'MConfigurationController@webStore');
-//    Route::get('/mconfiguration/create', 'MConfigurationController@webCreate');
-//    Route::post('/mconfiguration/update', 'MConfigurationController@webUpdate');
-//    Route::post('/mconfiguration/destroy', 'MConfigurationController@webDestroy');
-//    Route::get('/mconfiguration/edit/{id}', 'MConfigurationController@webEdit');
-//    Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
-//    Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
-//    Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
+
+    Route::get('/mconfiguration', 'MConfigurationController@webIndex')->name('mconfiguration');
+    Route::post('/mconfiguration/store', 'MConfigurationController@webStore');
+    Route::get('/mconfiguration/create', 'MConfigurationController@webCreate');
+    Route::post('/mconfiguration/update', 'MConfigurationController@webUpdate');
+    Route::post('/mconfiguration/destroy', 'MConfigurationController@webDestroy');
+    Route::get('/mconfiguration/edit/{id}', 'MConfigurationController@webEdit');
+    Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
+    Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
+    Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
 });

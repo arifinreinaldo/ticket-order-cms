@@ -24,11 +24,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_30_134831_create_articles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_30_134831_create_articles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MArticle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MCalendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MCalendar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mbanner_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mbanner_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mpromotion_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mpromotion_create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +231,8 @@
       <workItem from="1609732503718" duration="257000" />
       <workItem from="1609733147858" duration="617000" />
       <workItem from="1609742807351" duration="372000" />
-      <workItem from="1609749262335" duration="1337000" />
+      <workItem from="1609749262335" duration="1443000" />
+      <workItem from="1609761329539" duration="454000" />
     </task>
     <servers />
   </component>
@@ -297,9 +300,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609752235445" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609752363894">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609761777764">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609752363894" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609761777764" />
   </component>
 </project>
