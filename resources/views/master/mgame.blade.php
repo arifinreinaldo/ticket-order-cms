@@ -133,7 +133,7 @@
                 $('#state_param').val(1);
                 $('#userid_param').val(ids);
                 $('#actionForm').attr('action', '{{url('/mgame/toggle')}}');
-                showModal("Activate Confirmation", "Are you sure want to activate these users?");
+                showModal("Activate Confirmation", "Are you sure want to activate these data?");
             }
         });
         $(document).on("click", "#actDeactivate", function () {
@@ -143,7 +143,7 @@
                 $('#userid_param').val(ids);
                 $('#actionForm').attr('action', '{{url('/mgame/toggle')}}');
                 // $('#actionForm').submit();
-                showModal("Deactivate Confirmation", "Are you sure want to deactivate these users?");
+                showModal("Deactivate Confirmation", "Are you sure want to deactivate these data?");
             }
         });
         $(document).on("click", "#actDelete", function () {
@@ -152,7 +152,7 @@
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
                 $('#actionForm').attr('action', '{{url('/mgame/destroy')}}');
-                showModal("Delete Confirmation", "Are you sure want to delete these users?");
+                showModal("Delete Confirmation", "Are you sure want to delete these data?");
             }
         });
         $(document).on("click", "#confirmButtonModal", function () {
