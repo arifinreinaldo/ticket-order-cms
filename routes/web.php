@@ -78,24 +78,24 @@ Route::group([
     Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
     Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
     Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
-//
-//    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
-//    Route::post('/mcalendar/store', 'MCalendarController@webStore');
-//    Route::get('/mcalendar/create', 'MCalendarController@webCreate');
-//    Route::post('/mcalendar/update', 'MCalendarController@webUpdate');
-//    Route::post('/mcalendar/destroy', 'MCalendarController@webDestroy');
-//    Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
-//    Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
-//    Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
-//
-//    Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
-//    Route::post('/marticle/store', 'MArticleController@webStore');
-//    Route::get('/marticle/create', 'MArticleController@webCreate');
-//    Route::post('/marticle/update', 'MArticleController@webUpdate');
-//    Route::post('/marticle/destroy', 'MArticleController@webDestroy');
-//    Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
-//    Route::post('/marticle/toggle', 'MArticleController@webToggle');
-//    Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
+
+    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
+    Route::post('/mcalendar/store', 'MCalendarController@webStore');
+    Route::get('/mcalendar/create', 'MCalendarController@webCreate');
+    Route::post('/mcalendar/update', 'MCalendarController@webUpdate');
+    Route::post('/mcalendar/destroy', 'MCalendarController@webDestroy');
+    Route::get('/mcalendar/edit/{id}', 'MCalendarController@webEdit');
+    Route::post('/mcalendar/toggle', 'MCalendarController@webToggle');
+    Route::get('/mcalendarajax', 'MCalendarController@ajaxData')->name('mcalendarajax');
+
+    Route::get('/marticle', 'MArticleController@webIndex')->name('marticle');
+    Route::post('/marticle/store', 'MArticleController@webStore');
+    Route::get('/marticle/create', 'MArticleController@webCreate');
+    Route::post('/marticle/update', 'MArticleController@webUpdate');
+    Route::post('/marticle/destroy', 'MArticleController@webDestroy');
+    Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
+    Route::post('/marticle/toggle', 'MArticleController@webToggle');
+    Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
 //
 //    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
 //    Route::post('/mbanner/store', 'MBannerController@webStore');
