@@ -165,7 +165,7 @@ class MRoleController extends Controller
                     }
                     MMenuRole::create($menu_role);
                 }
-                return redirect("/mrole")->with('success', 'Success update role data.');
+                return redirect("/mrole")->with('success', 'Success update role data. Please Re-Login in order to get the effect');
 
             } catch (\Exception $ex) {
                 report($ex);
