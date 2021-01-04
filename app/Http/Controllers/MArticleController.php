@@ -29,13 +29,17 @@ class MArticleController extends Controller
         $data = request()->validate([
             'title' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg|max:1024',
+            'banner' => 'required|image|mimes:jpg,png,jpeg|max:1024',
             'content' => 'required|max:3000',
         ]);
 
         try {
             $data['status'] = '1';
             $imagePath = Util::storeFile(request('image'), 'article_image');
+            $bannerPath = Util::storeFile(request('banner'), 'article_banner_image');
             unset($data['image']);
+            unset($data['banner']);
+            $data['banner'] = $bannerPath;
             $data['image'] = $imagePath;
             $marticles = MArticle::create($data);
         } catch (Exception $e) {
@@ -59,6 +63,7 @@ class MArticleController extends Controller
             'id' => 'required',
             'title' => 'required',
             'image' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
+            'banner' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
             'content' => 'required|max:3000',
         ]);
 
@@ -70,6 +75,11 @@ class MArticleController extends Controller
                 $imagePath = Util::updateFile($oldData->image, request('image'), 'article_image');
                 unset($data['image']);
                 $oldData->image = $imagePath;
+            }
+            if ($request['banner']) {
+                $bannerPath = Util::updateFile($oldData->image, request('banner'), 'article_banner_image');
+                unset($data['banner']);
+                $oldData->banner = $bannerPath;
             }
             $oldData->save();
         } catch (Exception $e) {
@@ -155,6 +165,7 @@ class MArticleController extends Controller
                 $data = MArticle::findOrFail($id);
                 try {
                     Util::deleteFile($data->image);
+                    Util::deleteFile($data->banner);
                     MArticle::destroy($id);
                 } catch (QueryException $ex) {
                     report($ex);

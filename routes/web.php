@@ -96,15 +96,15 @@ Route::group([
     Route::get('/marticle/edit/{id}', 'MArticleController@webEdit');
     Route::post('/marticle/toggle', 'MArticleController@webToggle');
     Route::get('/marticleajax', 'MArticleController@ajaxData')->name('marticleajax');
-//
-//    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
-//    Route::post('/mbanner/store', 'MBannerController@webStore');
-//    Route::get('/mbanner/create', 'MBannerController@webCreate');
-//    Route::post('/mbanner/update', 'MBannerController@webUpdate');
-//    Route::post('/mbanner/destroy', 'MBannerController@webDestroy');
-//    Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
-//    Route::post('/mbanner/toggle', 'MBannerController@webToggle');
-//    Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
+
+    Route::get('/mbanner', 'MBannerController@webIndex')->name('mbanner');
+    Route::post('/mbanner/store', 'MBannerController@webStore');
+    Route::get('/mbanner/create', 'MBannerController@webCreate');
+    Route::post('/mbanner/update', 'MBannerController@webUpdate');
+    Route::post('/mbanner/destroy', 'MBannerController@webDestroy');
+    Route::get('/mbanner/edit/{id}', 'MBannerController@webEdit');
+    Route::post('/mbanner/toggle', 'MBannerController@webToggle');
+    Route::get('/mbannerajax', 'MBannerController@ajaxData')->name('mbannerajax');
 //
 //    Route::get('/mconfiguration', 'MConfigurationController@webIndex')->name('mconfiguration');
 //    Route::post('/mconfiguration/store', 'MConfigurationController@webStore');

@@ -37,7 +37,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label for="image">Game Cover Image( Resolution 100px x 100px )</label>
+                            <label for="image">Game Cover Image ( Resolution 100px x 100px )</label>
                             <input type="file" class="form-control-file" id="image" name="image">
 
                         </div>

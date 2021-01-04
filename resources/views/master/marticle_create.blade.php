@@ -37,9 +37,12 @@
                             >
                         </div>
                         <div class="form-group">
-                            <label for="image">Article Image( Resolution 100px x 100px )</label>
+                            <label for="image">Article Banner ( Resolution 100px x 100px )</label>
+                            <input type="file" class="form-control-file" id="banner" name="banner">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Article Image ( Resolution 100px x 100px )</label>
                             <input type="file" class="form-control-file" id="image" name="image">
-
                         </div>
                         <div class="form-group">
                             <label for="image">Article Body</label>
