@@ -119,6 +119,26 @@
                                 {{ $update === "X" ? "" : "disabled" }}
                             >
                         </div>
+
+                        <div class="form-group">
+                            <label>Email Port SMTP</label>
+                            <input type="text" class="form-control" name="smtp_port"
+                                   @if (!empty($data))
+                                   value="{{$data->smtp_port}}"
+                                @endif
+                                {{ $update === "X" ? "" : "disabled" }}
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Port POP</label>
+                            <input type="text" class="form-control" name="smtp_from"
+                                   @if (!empty($data))
+                                   value="{{$data->smtp_from}}"
+                                @endif
+                                {{ $update === "X" ? "" : "disabled" }}
+                            >
+                        </div>
                         @if($update=='X')
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>

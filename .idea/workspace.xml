@@ -24,14 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MArticle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MCalendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MCalendar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mbanner_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mbanner_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mcalendar_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgame_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mpromotion_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mpromotion_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MSmtpConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MSmtpConfig.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/MailConfigServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/MailConfigServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_02_082817_create_smtp_configs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_02_082817_create_smtp_configs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +229,9 @@
       <workItem from="1609733147858" duration="617000" />
       <workItem from="1609742807351" duration="372000" />
       <workItem from="1609749262335" duration="1443000" />
-      <workItem from="1609761329539" duration="454000" />
+      <workItem from="1609761329539" duration="573000" />
+      <workItem from="1609761942928" duration="290000" />
+      <workItem from="1609762402402" duration="565000" />
     </task>
     <servers />
   </component>
@@ -300,9 +299,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609752235445" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609761777764">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609762652083">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609761777764" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609762652083" />
   </component>
 </project>

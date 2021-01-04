@@ -192,6 +192,8 @@ class MConfigurationController extends Controller
             'smtp_host' => 'required',
             'smtp_username' => 'required',
             'smtp_password' => 'required',
+            'smtp_port' => 'required',
+            'smtp_from' => 'required',
         ]);
         try {
             $oldData = MSmtpConfig::all()->first();
@@ -200,6 +202,8 @@ class MConfigurationController extends Controller
                 $oldData->smtp_host = $data['smtp_host'];
                 $oldData->smtp_username = $data['smtp_username'];
                 $oldData->smtp_password = $data['smtp_password'];
+                $oldData->smtp_port = $data['smtp_port'];
+                $oldData->smtp_from = $data['smtp_from'];
                 $oldData->save();
             } else {
                 $mconfigurations = MSmtpConfig::updateOrCreate($data);

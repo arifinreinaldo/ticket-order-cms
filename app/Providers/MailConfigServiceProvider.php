@@ -35,7 +35,7 @@ class MailConfigServiceProvider extends ServiceProvider
                 'username' => $data->smtp_username,
                 'password' => $data->smtp_password,
                 'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
-                'from' => array('address' => $data->smtp_username, 'name' => env('APP_NAME', 'Trans')),
+                'from' => array('address' => $data->smtp_from, 'name' => env('APP_NAME', 'Trans')),
                 'sendmail' => '/usr/sbin/sendmail -bs',
                 'pretend' => false,
             );

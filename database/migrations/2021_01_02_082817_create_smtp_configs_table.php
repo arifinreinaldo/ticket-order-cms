@@ -18,6 +18,8 @@ class CreateSmtpConfigsTable extends Migration
             $table->string('smtp_username');
             $table->string('smtp_password');
             $table->string('smtp_host');
+            $table->string('smtp_port');
+            $table->string('smtp_from');
             $table->timestamps();
         });
     }
