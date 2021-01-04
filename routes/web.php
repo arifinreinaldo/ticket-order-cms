@@ -70,14 +70,14 @@ Route::group([
     Route::post('/mgame/destroy', 'MGameController@webDestroy');
     Route::post('/mgame/toggle', 'MGameController@webToggle');
 
-//    Route::get('/mpromotion', 'MPromotionController@webIndex')->name('mpromotion');
-//    Route::post('/mpromotion/store', 'MPromotionController@webStore');
-//    Route::get('/mpromotion/create', 'MPromotionController@webCreate');
-//    Route::post('/mpromotion/update', 'MPromotionController@webUpdate');
-//    Route::post('/mpromotion/destroy', 'MPromotionController@webDestroy');
-//    Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
-//    Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
-//    Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
+    Route::get('/mpromotion', 'MPromotionController@webIndex')->name('mpromotion');
+    Route::post('/mpromotion/store', 'MPromotionController@webStore');
+    Route::get('/mpromotion/create', 'MPromotionController@webCreate');
+    Route::post('/mpromotion/update', 'MPromotionController@webUpdate');
+    Route::post('/mpromotion/destroy', 'MPromotionController@webDestroy');
+    Route::get('/mpromotion/edit/{id}', 'MPromotionController@webEdit');
+    Route::post('/mpromotion/toggle', 'MPromotionController@webToggle');
+    Route::get('/mpromotionajax', 'MPromotionController@ajaxData')->name('/mpromotionajax');
 //
 //    Route::get('/mcalendar', 'MCalendarController@webIndex')->name('mcalendar');
 //    Route::post('/mcalendar/store', 'MCalendarController@webStore');
