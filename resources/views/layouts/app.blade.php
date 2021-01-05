@@ -393,7 +393,8 @@
                                     </button>
                                 </div>
                             @endif
-                            <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert"
+                                 style="display: none">
                                 <span id="contentMessage"></span>
                                 <button type="button" class="close" id="closeMessage"><span
                                         aria-hidden="true">×</span></button>
@@ -437,13 +438,13 @@
         $(document).ready(function () {
             $('#errorMessage').hide();
             $('#closeMessage').click(function () {
-                $('#errorMessage').fadeOut();
+                $('#errorMessage').slideUp();
             })
         });
 
         function showMessage(data) {
             $('#contentMessage').html(data);
-            $('#errorMessage').show();
+            $('#errorMessage').slideDown();
             $("html, body").animate({scrollTop: 0}, "slow");
         }
 

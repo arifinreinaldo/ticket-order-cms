@@ -115,4 +115,24 @@ Route::group([
     Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
     Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
     Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
+
+
+    Route::get('/mstatic', 'MStaticController@webIndex')->name('mstatic');
+    Route::post('/mstatic/store', 'MStaticController@webStore');
+    Route::get('/mstatic/create', 'MStaticController@webCreate');
+    Route::post('/mstatic/update', 'MStaticController@webUpdate');
+    Route::post('/mstatic/destroy', 'MStaticController@webDestroy');
+    Route::get('/mstatic/edit/{id}', 'MStaticController@webEdit');
+    Route::post('/mstatic/toggle', 'MStaticController@webToggle');
+    Route::get('/mstaticajax', 'MStaticController@ajaxData')->name('mstaticajax');
+
+
+    Route::get('/mfaq', 'MFaqController@webIndex')->name('mfaq');
+    Route::post('/mfaq/store', 'MFaqController@webStore');
+    Route::get('/mfaq/create', 'MFaqController@webCreate');
+    Route::post('/mfaq/update', 'MFaqController@webUpdate');
+    Route::post('/mfaq/destroy', 'MFaqController@webDestroy');
+    Route::get('/mfaq/edit/{id}', 'MFaqController@webEdit');
+    Route::post('/mfaq/toggle', 'MFaqController@webToggle');
+    Route::get('/mfaqajax', 'MFaqController@ajaxData')->name('mfaqajax');
 });
