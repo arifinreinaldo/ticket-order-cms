@@ -4,7 +4,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{url('/marticle')}}">
+                <a href="{{url('/mtemplate')}}">
                     <button type="button" class="btn btn-warning" title="">Back</button>
                 </a>
             </div>
@@ -14,9 +14,9 @@
         <div class="card">
             <div class="card-header">
                 @if (!empty($data))
-                    <h5>Edit Article</h5>
+                    <h5>Edit Email Template</h5>
                 @else
-                    <h5>Create New Article</h5>
+                    <h5>Create New Email Template</h5>
                 @endif
             </div>
             <div class="card-block table-border-style">
@@ -25,11 +25,11 @@
                 @else
                     @php($type= 'update')
                 @endif
-                <form method="POST" action="{{url('/marticle')}}/{{$type}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/mtemplate')}}/{{$type}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Article Title</label>
+                            <label>Email Template</label>
                             <input type="text" class="form-control" name="title"
                                    @if (!empty($data))
                                    value="{{$data->title}}"
@@ -37,23 +37,19 @@
                             >
                         </div>
                         <div class="form-group">
-                            @if(!empty($data))
-                                <img class='img-fluid img-thumbnail' src='{{$data->getBanner()}}'
-                            @endif
-                            <label for="image">Article Banner ( Resolution 100px x 100px )</label>
-                            <input type="file" class="form-control-file" id="banner" name="banner">
+                            <label for="image">Email Head</label>
+                            <textarea class="wsiwyg" name="head">
+                        @if (!empty($data)){{$data->head}}@endif</textarea>
                         </div>
                         <div class="form-group">
-                            @if(!empty($data))
-                                <img class='img-fluid img-thumbnail' src='{{$data->getImage()}}'
-                            @endif
-                            <label for="image">Article Image ( Resolution 100px x 100px )</label>
-                            <input type="file" class="form-control-file" id="image" name="image">
+                            <label for="image">Email Body</label>
+                            <textarea class="wsiwyg" name="body">
+                        @if (!empty($data)){{$data->body}}@endif</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Article Body</label>
-                            <textarea id="wsiwyg" name="content">
-                        @if (!empty($data)){{$data->content}}@endif</textarea>
+                            <label for="image">Email Footer</label>
+                            <textarea class="wsiwyg" name="footer">
+                        @if (!empty($data)){{$data->footer}}@endif</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -75,7 +71,7 @@
     <script>
         $(document).ready(function () {
             tinymce.init({
-                selector: '#wsiwyg',
+                selector: '.wsiwyg',
                 width: 700,
                 height: 350,
                 plugins: [

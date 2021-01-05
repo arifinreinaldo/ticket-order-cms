@@ -135,4 +135,14 @@ Route::group([
     Route::get('/mfaq/edit/{id}', 'MFaqController@webEdit');
     Route::post('/mfaq/toggle', 'MFaqController@webToggle');
     Route::get('/mfaqajax', 'MFaqController@ajaxData')->name('mfaqajax');
+
+
+    Route::get('/mtemplate', 'MTemplateController@webIndex')->name('mtemplate');
+    Route::post('/mtemplate/store', 'MTemplateController@webStore');
+    Route::get('/mtemplate/create', 'MTemplateController@webCreate');
+    Route::post('/mtemplate/update', 'MTemplateController@webUpdate');
+    Route::post('/mtemplate/destroy', 'MTemplateController@webDestroy');
+    Route::get('/mtemplate/edit/{id}', 'MTemplateController@webEdit');
+    Route::post('/mtemplate/toggle', 'MTemplateController@webToggle');
+    Route::get('/mtemplateajax', 'MTemplateController@ajaxData')->name('mtemplateajax');
 });
