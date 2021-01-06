@@ -23,10 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/master/mtemplate_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/marticle_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +229,8 @@
       <workItem from="1609761942928" duration="290000" />
       <workItem from="1609762402402" duration="811000" />
       <workItem from="1609809757400" duration="3952000" />
-      <workItem from="1609821779408" duration="2462000" />
+      <workItem from="1609821779408" duration="2920000" />
+      <workItem from="1609908665964" duration="77000" />
     </task>
     <servers />
   </component>
@@ -295,13 +294,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1607050224630" />
-    <state x="538" y="291" width="933" height="490" key="find.popup" timestamp="1609752235445">
+    <state x="538" y="291" width="933" height="490" key="find.popup" timestamp="1609908703977">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609752235445" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609834286532">
+    <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609908703977" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1609908687397">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609834286532" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1609908687397" />
   </component>
 </project>
