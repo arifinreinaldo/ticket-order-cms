@@ -4,7 +4,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{url('/mgamecenter')}}">
+                <a href="{{url('/mgcenter')}}">
                     <button type="button" class="btn btn-warning" title="">Back</button>
                 </a>
             </div>
@@ -25,7 +25,7 @@
                 @else
                     @php($type= 'update')
                 @endif
-                <form method="POST" action="{{url('/mgamecenter')}}/{{$type}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/mgcenter')}}/{{$type}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">

@@ -36,9 +36,9 @@ class MGamecenterController extends Controller
             $mgamecenters = MGamecenter::create($data);
         } catch (Exception $e) {
             report($e);
-            return redirect("/mgamecenter")->with('failed', 'Failed insert data.');
+            return redirect("/mgcenter")->with('failed', 'Failed insert data.');
         }
-        return redirect("/mgamecenter")->with('success', 'Success insert data.');
+        return redirect("/mgcenter")->with('success', 'Success insert data.');
     }
 
     public function webShow($id)
@@ -69,9 +69,9 @@ class MGamecenterController extends Controller
             $oldData->save();
         } catch (Exception $e) {
             report($e);
-            return redirect("/mgamecenter")->with('failed', 'Failed update data.');
+            return redirect("/mgcenter")->with('failed', 'Failed update data.');
         }
-        return redirect("/mgamecenter")->with('success', 'Success update data.');
+        return redirect("/mgcenter")->with('success', 'Success update data.');
     }
 
     public function ajaxData(Request $request)
@@ -104,7 +104,7 @@ class MGamecenterController extends Controller
             return view('master.mgamecenter_create', compact('data', 'size'));
         } catch (ModelNotFoundException $ex) {
             report($ex);
-            return redirect("/mgamecenter")->with('failed', 'Data Not found');
+            return redirect("/mgcenter")->with('failed', 'Data Not found');
         }
     }
 
@@ -123,14 +123,14 @@ class MGamecenterController extends Controller
                 $item->save();
             }
             if ($request['state'] == '1') {
-                return redirect("/mgamecenter")->with('success', 'Data has been activated');
+                return redirect("/mgcenter")->with('success', 'Data has been activated');
             } else if ($request['state'] == '2') {
-                return redirect("/mgamecenter")->with('success', 'Data has been deactivated');
+                return redirect("/mgcenter")->with('success', 'Data has been deactivated');
             }
 
         } catch (\Exception $exception) {
             report($exception);
-            return redirect("/mgamecenter")->with('failed', 'Failed to update role user(s)');
+            return redirect("/mgcenter")->with('failed', 'Failed to update role user(s)');
         }
     }
 
@@ -144,11 +144,11 @@ class MGamecenterController extends Controller
         });
         try {
             $data = MGamecenter::destroy($ids);
-            return redirect("/mgamecenter")->with('success', 'Data has been deleted');
+            return redirect("/mgcenter")->with('success', 'Data has been deleted');
 
         } catch (\Exception $exception) {
             report($exception);
-            return redirect("/mgamecenter")->with('failed', 'Failed to delete role(s)');
+            return redirect("/mgcenter")->with('failed', 'Failed to delete role(s)');
         }
     }
 }

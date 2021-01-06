@@ -145,13 +145,13 @@ Route::group([
     Route::get('/mtemplate/edit/{id}', 'MTemplateController@webEdit');
     Route::post('/mtemplate/toggle', 'MTemplateController@webToggle');
     Route::get('/mtemplateajax', 'MTemplateController@ajaxData')->name('mtemplateajax');
-    
-    Route::get('/mgamecenter', 'MGamecenterController@webIndex')->name('mgamecenter');
-    Route::post('/mgamecenter/store', 'MGamecenterController@webStore');
-    Route::get('/mgamecenter/create', 'MGamecenterController@webCreate');
-    Route::post('/mgamecenter/update', 'MGamecenterController@webUpdate');
-    Route::post('/mgamecenter/destroy', 'MGamecenterController@webDestroy');
-    Route::get('/mgamecenter/edit/{id}', 'MGamecenterController@webEdit');
-    Route::post('/mgamecenter/toggle', 'MGamecenterController@webToggle');
-    Route::get('/mgamecenterajax', 'MGamecenterController@ajaxData')->name('mgamecenterajax');
+
+    Route::get('/mgcenter', 'MGamecenterController@webIndex')->name('mgcenter');
+    Route::post('/mgcenter/store', 'MGamecenterController@webStore');
+    Route::get('/mgcenter/create', 'MGamecenterController@webCreate');
+    Route::post('/mgcenter/update', 'MGamecenterController@webUpdate');
+    Route::post('/mgcenter/destroy', 'MGamecenterController@webDestroy');
+    Route::get('/mgcenter/edit/{id}', 'MGamecenterController@webEdit');
+    Route::post('/mgcenter/toggle', 'MGamecenterController@webToggle');
+    Route::get('/mgcenterajax', 'MGamecenterController@ajaxData')->name('mgcenterajax');
 });

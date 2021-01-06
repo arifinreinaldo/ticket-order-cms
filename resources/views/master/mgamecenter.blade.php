@@ -20,7 +20,7 @@
     {{$update = ''}}
     {{$delete = ''}}
     @foreach (session('menu') as $menu)
-        @if($menu->alias=='mgamecenter')
+        @if($menu->alias=='mgcenter')
             @php($create = $menu->create_access)
             @php($update = $menu->update_access)
             @php($delete = $menu->delete_access)
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-header">
                     @if($create=='X')
-                        <a href="{{url('/mgamecenter/create')}}">
+                        <a href="{{url('/mgcenter/create')}}">
                             <button type="button" class="btn btn-primary" title="">Create</button>
                         </a>
                     @endif
@@ -92,7 +92,7 @@
             table = $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{URL::to('/mgamecenterajax')}}",
+                ajax: "{{URL::to('/mgcenterajax')}}",
                 columns: [
                     {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
@@ -108,13 +108,13 @@
         $(document).on("click", ".btn-activate", function () {
             var userid = $(this).attr('userid');
             $('#userid_param').val(userid);
-            $('#actionForm').attr('action', '{{url('/mgamecenter/toggle')}}');
+            $('#actionForm').attr('action', '{{url('/mgcenter/toggle')}}');
             $('#actionForm').submit();
         });
         @if($update=='X')
         $(document).on("click", ".btn-edit", function () {
             var userid = $(this).attr('userid');
-            window.location.href = '/mgamecenter/edit/' + userid;
+            window.location.href = '/mgcenter/edit/' + userid;
         });
         @endif
         $(document).on("click", "#all_check", function () {
@@ -128,7 +128,7 @@
             if (ids != "") {
                 $('#state_param').val(1);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/mgamecenter/toggle')}}');
+                $('#actionForm').attr('action', '{{url('/mgcenter/toggle')}}');
                 showModal("Activate Confirmation", "Are you sure want to activate these users?");
             }
         });
@@ -137,7 +137,7 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/mgamecenter/toggle')}}');
+                $('#actionForm').attr('action', '{{url('/mgcenter/toggle')}}');
                 // $('#actionForm').submit();
                 showModal("Deactivate Confirmation", "Are you sure want to deactivate these users?");
             }
@@ -147,7 +147,7 @@
             if (ids != "") {
                 $('#state_param').val(2);
                 $('#userid_param').val(ids);
-                $('#actionForm').attr('action', '{{url('/mgamecenter/destroy')}}');
+                $('#actionForm').attr('action', '{{url('/mgcenter/destroy')}}');
                 showModal("Delete Confirmation", "Are you sure want to delete these users?");
             }
         });
