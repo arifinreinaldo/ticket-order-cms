@@ -92,9 +92,10 @@
                 processing: true,
                 serverSide: true,
                 "searching": false,
+                "lengthChange": false,
                 ajax: "{{URL::to('/mtemplateajax')}}",
                 columns: [
-                    {data: 'id_data', name: 'id_data',  searchable: false},
+                    {data: 'id_data', name: 'id_data', searchable: false},
                     {data: 'title', name: 'u.title', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                     // {data: 'action', name: 'action', orderable: false, searchable: false},
