@@ -5,18 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class {{modelName}} extends Model
+class MTheme extends Model
 {
     use  LogsActivity;
 
-    protected $table = '';
-    protected static $logAttributes = [];
-    protected static $logName = ;
+    protected $table = 'themeparks';
+    protected static $logAttributes = ['name', 'image', 'status'];
+    protected static $logName = 'theme park';
     protected static $logOnlyDirty = true;
     protected $guarded = ['id'];
 
-    /*public function getImage()
+    public function getImage()
     {
         return ($this->image) ? asset('/storage/' . $this->image) : '/svg/icon.svg';
-    }*/
+    }
 }
