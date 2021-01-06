@@ -34,38 +34,27 @@ class HomeController extends Controller
             ->get();
         session(['menu' => $accesses]);
 
-//        config([
-//            'mail.driver' => 'smtp',
-//            'mail.host' => 'smtp.gmail.com',
-//            'mail.port' => 587,
-//            'mail.encryption' => 'tls',
-//            'mail.username' => 'emailspamrei@gmail.com',
-//            'mail.password' => '4llhailtheK1ng',
-//            'mail.from' => ['address' => 'emailspamrei@gmail.com', 'name' => 'Trans CMS']
-//        ]);
-//        config(['mail.from' => ['address' => 'emailspamrei@gmail.com', 'name' => 'Trans CMS']]);
-//        dd(config('mail'));
-        /*
-        $api = env('TRANS_API', '');
-        $key = env('INTERFACE_KEY', '');
-        $MerchantCodebekasi = "S2019031810004";
-        $TimeStamp = time();
-        $signatureKeybekasi = strtoupper(md5($MerchantCodebekasi . $key . $TimeStamp));
+//        $api = env('TRANS_API', '');
+//        $key = env('INTERFACE_KEY', '');
+//        $MerchantCodebekasi = "S2019031810004";
+//        $TimeStamp = time();
+//        $signatureKeybekasi = strtoupper(md5($MerchantCodebekasi . $key . $TimeStamp));
+//
+//        $client = new Client(['base_uri' => $api]);
+//        $response = $client->request('GET', 'GetProducts',
+//            ['query' => ['MerchantCode' => $MerchantCodebekasi, 'TimeStamp' => $TimeStamp, 'Sign' => $signatureKeybekasi]]);
+//        $content = $response->getBody()->getContents();
+//        $object = json_decode($content);
+//        dd($object);
+//        if ($object->IsTrue) {
+//            $json = json_decode($object->ResultJson);
+//            dd($json);
+//        }
+//
+//        $json = "[{\"ShelvesId\":15305,\"ProductId\":3173,\"LineProCode\":\"4092\",\"ProductName\":\"CHILD TICKET\",\"ProductTypeId\":3963,\"ProductTypeName\":\"Demo Product\",\"ProductSellPrice\":2.0,\"ProductIntroduction\":\"\u003cp\u003eChild Ticket\u003cbr/\u003e\u003c/p\u003e\",\"UsageMethod\":\"\u003cp\u003eChild Ticket \u003cbr/\u003e\u003c/p\u003e\u003cp\u003e1x Entry (3-12 Years Old)\u003cbr/\u003e\u003c/p\u003e\"}]";
+//
+//        dd(json_decode($json));
 
-        $client = new Client(['base_uri' => $api]);
-        $response = $client->request('GET', 'GetProducts',
-            ['query' => ['MerchantCode' => $MerchantCodebekasi, 'TimeStamp' => $TimeStamp, 'Sign' => $signatureKeybekasi]]);
-        $content = $response->getBody()->getContents();
-        $object = json_decode($content);
-        if ($object->IsTrue) {
-            $json = json_decode($object->ResultJson);
-            dd($json);
-        }
-
-        $json = "[{\"ShelvesId\":15305,\"ProductId\":3173,\"LineProCode\":\"4092\",\"ProductName\":\"CHILD TICKET\",\"ProductTypeId\":3963,\"ProductTypeName\":\"Demo Product\",\"ProductSellPrice\":2.0,\"ProductIntroduction\":\"\u003cp\u003eChild Ticket\u003cbr/\u003e\u003c/p\u003e\",\"UsageMethod\":\"\u003cp\u003eChild Ticket \u003cbr/\u003e\u003c/p\u003e\u003cp\u003e1x Entry (3-12 Years Old)\u003cbr/\u003e\u003c/p\u003e\"}]";
-
-        dd(json_decode($json));
-        */
         return view('home');
     }
 
