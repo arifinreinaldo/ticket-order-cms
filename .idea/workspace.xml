@@ -23,8 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/MGamecenterbranch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/MGamecenterlocation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MGamecenterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MGamecenterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MGamecenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MGamecenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master/mgamecenter_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mgamecenter_create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,15 +167,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/master" />
       <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/resources/views/master" />
       <recent name="$PROJECT_DIR$/public/assets/js" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/resources/views" />
@@ -289,10 +294,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="341" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1607398638171" />
-    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1610008177673">
+    <state x="570" y="275" width="540" height="524" key="StructurePopup" timestamp="1610030103975">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1610008177673" />
+    <state x="570" y="275" width="540" height="524" key="StructurePopup/0.23.1680.1027@0.23.1680.1027" timestamp="1610030103975" />
     <state x="467" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607050224630">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -301,9 +306,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610003523874" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1610008348982">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1610032004957">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610008348982" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610032004957" />
   </component>
 </project>

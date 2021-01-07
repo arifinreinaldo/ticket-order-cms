@@ -9,6 +9,7 @@ return [
     'event_banner_image' => 'uploads/event/banner',
     'social_icon_image' => 'uploads/socials',
     'game_center_banner_image' => 'uploads/game_center/banner',
+    'game_center_branch_image' => 'uploads/game_center/branches',
     'theme_banner_image' => 'uploads/theme',
 ];
 ?>

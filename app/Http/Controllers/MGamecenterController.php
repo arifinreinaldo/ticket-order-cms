@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Util;
 use App\MGamecenter;
+use App\MGamecenterbranch;
+use App\MGamecenterlocation;
 use DataTables;
 use Exception;
 use Illuminate\Http\Request;
@@ -29,13 +31,30 @@ class MGamecenterController extends Controller
             'name' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg|max:1024'
         ]);
-
         $data['status'] = 1;
         try {
             $imagePath = Util::storeFile(request('image'), 'game_center_banner_image');
             unset($data['image']);
             $data['image'] = $imagePath;
             $mgamecenters = MGamecenter::create($data);
+            $gcId = $mgamecenters->id;
+            foreach ($request['branch_name'] as $key => $value) {
+                $location['name'] = $value;
+                $location['game_center_id'] = $gcId;
+                $gameLoc = MGamecenterlocation::create($location);
+                $gcLId = $gameLoc->id;
+                $idx = $request['branch_index'][$key];
+                foreach ($request['subbranch_location'][$idx] as $keyBranch => $value) {
+                    $branch['name'] = $value;
+                    $branch['game_center_id'] = $gcId;
+                    $branch['game_center_location_id'] = $gcLId;
+                    $branch['title'] = $request['subbranch_name'][$idx][$keyBranch];
+                    $branch['content'] = $request['subbranch_content'][$idx][$keyBranch];
+                    $branchPath = Util::storeFile($request['subbranch_image'][$idx][$keyBranch], 'game_center_branch_image');
+                    $branch['image'] = $branchPath;
+                    MGamecenterbranch::create($branch);
+                }
+            }
         } catch (Exception $e) {
             report($e);
             return redirect("/mgcenter")->with('failed', 'Failed insert data.');
@@ -69,7 +88,56 @@ class MGamecenterController extends Controller
                 $oldData->image = $imagePath;
             }
             $oldData->save();
+
+            foreach ($request['branch_name'] as $key => $value) {
+                $gcLId = $request['location_id'][$key];
+                if ($gcLId != -1) {
+                    $oldLocation = MGamecenterlocation::findOrFail($gcLId);
+                    $oldLocation->name = $value;
+                    $oldLocation->save();
+                } else {
+                    $location['name'] = $value;
+                    $location['game_center_id'] = $data['id'];
+                    $gameLoc = MGamecenterlocation::create($location);
+                    $gcLId = $gameLoc->id;
+                }
+                $idx = $request['branch_index'][$key];
+                foreach ($request['subbranch_location'][$idx] as $keyBranch => $value) {
+                    $gcBranchId = $request['branch_id'][$idx][$keyBranch];
+                    if ($gcBranchId != -1) {
+                        $oldBranch = MGamecenterbranch::findOrFail($gcBranchId);
+                        $oldBranch->name = $value;
+                        $oldBranch->title = $request['subbranch_name'][$idx][$keyBranch];
+                        $oldBranch->content = $request['subbranch_content'][$idx][$keyBranch];
+                        if (isset($request['subbranch_image'][$idx][$keyBranch])) {
+                            $branchPath = Util::updateFile($oldBranch->image, $request['subbranch_image'][$idx][$keyBranch], 'game_center_branch_image');
+                            $oldBranch->image = $branchPath;
+                        }
+                        $oldBranch->save();
+                    } else {
+                        $branch['name'] = $value;
+                        $branch['game_center_id'] = $data['id'];
+                        $branch['game_center_location_id'] = $gcLId;
+                        $branch['title'] = $request['subbranch_name'][$idx][$keyBranch];
+                        $branch['content'] = $request['subbranch_content'][$idx][$keyBranch];
+                        $branchPath = Util::storeFile($request['subbranch_image'][$idx][$keyBranch], 'game_center_branch_image');
+                        $branch['image'] = $branchPath;
+                        MGamecenterbranch::create($branch);
+                    }
+                }
+            }
+            if (isset($request['branch_id_delete'])) {
+                foreach ($request['branch_id_delete'] as $id) {
+                    MGamecenterbranch::destroy($id);
+                }
+            }
+            if (isset($request['location_id_delete'])) {
+                foreach ($request['location_id_delete'] as $id) {
+                    MGamecenterlocation::destroy($id);
+                }
+            }
         } catch (Exception $e) {
+            dd($e);
             report($e);
             return redirect("/mgcenter")->with('failed', 'Failed update data.');
         }
@@ -102,8 +170,7 @@ class MGamecenterController extends Controller
     {
         try {
             $data = MGamecenter::findOrFail($id);
-            $size = MGamecenter::all()->count();
-            return view('master.mgamecenter_create', compact('data', 'size'));
+            return view('master.mgamecenter_create', compact('data'));
         } catch (ModelNotFoundException $ex) {
             report($ex);
             return redirect("/mgcenter")->with('failed', 'Data Not found');

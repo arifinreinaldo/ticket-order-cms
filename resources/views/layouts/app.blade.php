@@ -438,9 +438,13 @@
         $(document).ready(function () {
             $('#errorMessage').hide();
             $('#closeMessage').click(function () {
-                $('#errorMessage').slideUp();
+                hideMessage();
             })
         });
+
+        function hideMessage() {
+            $('#errorMessage').slideUp();
+        }
 
         function showMessage(data) {
             $('#contentMessage').html(data);
