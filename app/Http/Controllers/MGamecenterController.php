@@ -24,10 +24,12 @@ class MGamecenterController extends Controller
 
     public function webStore(Request $request)
     {
+
         $data = request()->validate([
             'name' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg|max:1024'
         ]);
+
         $data['status'] = 1;
         try {
             $imagePath = Util::storeFile(request('image'), 'game_center_banner_image');
