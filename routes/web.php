@@ -154,5 +154,21 @@ Route::group([
     Route::get('/mgcenter/edit/{id}', 'MGamecenterController@webEdit');
     Route::post('/mgcenter/toggle', 'MGamecenterController@webToggle');
     Route::get('/mgcenterajax', 'MGamecenterController@ajaxData')->name('mgcenterajax');
+
+    Route::get('/mtheme', 'MThemeController@webIndex')->name('mtheme');
+    Route::post('/mtheme/store', 'MThemeController@webStore');
+    Route::get('/mtheme/create', 'MThemeController@webCreate');
+    Route::post('/mtheme/update', 'MThemeController@webUpdate');
+    Route::post('/mtheme/destroy', 'MThemeController@webDestroy');
+    Route::get('/mtheme/edit/{id}', 'MThemeController@webEdit');
+    Route::post('/mtheme/toggle', 'MThemeController@webToggle');
+    Route::get('/mthemeajax', 'MThemeController@ajaxData')->name('mthemeajax');
 });
-Route::get('/mtheme','MThemeController@webIndex')->name('mtheme');Route::post('/mtheme/store','MThemeController@webStore');Route::get('/mtheme/create','MThemeController@webCreate');Route::post('/mtheme/update','MThemeController@webUpdate');Route::post('/mtheme/destroy','MThemeController@webDestroy');Route::get('/mtheme/edit/{id}','MThemeController@webEdit');Route::post('/mtheme/toggle','MThemeController@webToggle');Route::get('/mthemeajax','MThemeController@ajaxData')->name('mthemeajax');
+Route::get('/mridecategory', 'MRidecategoryController@webIndex')->name('mridecategory');
+Route::post('/mridecategory/store', 'MRidecategoryController@webStore');
+Route::get('/mridecategory/create', 'MRidecategoryController@webCreate');
+Route::post('/mridecategory/update', 'MRidecategoryController@webUpdate');
+Route::post('/mridecategory/destroy', 'MRidecategoryController@webDestroy');
+Route::get('/mridecategory/edit/{id}', 'MRidecategoryController@webEdit');
+Route::post('/mridecategory/toggle', 'MRidecategoryController@webToggle');
+Route::get('/mridecategoryajax', 'MRidecategoryController@ajaxData')->name('mridecategoryajax');
