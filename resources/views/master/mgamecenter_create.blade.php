@@ -251,6 +251,9 @@
         $(document).ready(function () {
             initEditor('.wsiwyg');
             $('#order').val($('#order_value').val());
+            if ($('.branch-body').children().length == 0) {
+                addMainBranch();
+            }
         });
         $(document).on("click", "#btnSubmit", function (e) {
             e.preventDefault();
@@ -321,11 +324,15 @@
             wsiwygcounter++;
         });
         $(document).on("click", ".main-branch-add", function () {
+            addMainBranch();
+        });
+
+        function addMainBranch() {
             $('.branch-body').append($('.main-branch-clone').html().replace(/idxku/g, 'idxku' + counter).replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter));
             counter++;
             initEditor('#wsiwyg' + wsiwygcounter);
             wsiwygcounter++;
-        });
+        }
 
         function initEditor(pointer) {
             tinymce.init({
