@@ -55,6 +55,21 @@ class MRidecategoryController extends Controller
         ]);
         $gcId = $data['game_center_id'];
         try {
+            if (isset($request['category_delete'])) {
+                foreach ($request['category_delete'] as $id) {
+                    MRidecategory::destroy($id);
+                }
+            }
+            if (isset($request['sub_category_delete'])) {
+                foreach ($request['sub_category_delete'] as $id) {
+                    MRideitem::destroy($id);
+                }
+            }
+            if (isset($request['sub_category_item_delete'])) {
+                foreach ($request['sub_category_item_delete'] as $id) {
+                    MRideitemDetail::destroy($id);
+                }
+            }
             foreach ($request['category_name'] as $key => $value) {
                 $idxCategory = $request['branch_index'][$key];
                 $rId = $request['category_id'][$key];
