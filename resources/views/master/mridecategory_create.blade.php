@@ -12,7 +12,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5>Edit Rides</h5>
+                <h5>Edit {{$data->name}} Rides</h5>
             </div>
             <div class="card-block table-border-style">
                 @if(empty($data))
@@ -24,17 +24,217 @@
                     @csrf
                     <div class="col-md-12">
                         <div class="branch-body">
-                            @foreach($data as $datum)
+                            @if(!empty($data))
+                                @foreach($data->getCategory as $datum)
+                                    <div class="card">
+                                        <div class="card-header d-flex">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Main Title</label>
+                                                    <input type="text" class="form-control category_name"
+                                                           value="{{$datum->name}}"
+                                                           name="category_name[]"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class='fa fa-fw fa-times fa-pull-right pointer category-close'
+                                                      category_id="{{$datum->id}}"></span>
+                                                <br>
+                                                <span
+                                                    class="btn btn-info fa-pull-right sub-category-add">Add Rides</span>
+                                                <input type="hidden" name="branch_index[]" class="branch_index"
+                                                       value="savedidxku{{$datum->id}}">
+                                                <input type="hidden" name="category_id[]" class="category_id"
+                                                       value="{{$datum->id}}">
+                                            </div>
+                                        </div>
+                                        <div class="card-block table-border-style sub-branch-body">
+                                            @foreach($datum->getRide as $ride)
+                                                <div class="card">
+                                                    <div class="card-header">
+                        <span class='fa fa-fw fa-times fa-pull-right pointer sub-category-close'
+                              sub_category_id="{{$ride->id}}"></span>
+                                                        <div class="col-md-11">
+                                                            <div class="col-md-7">
+                                                                <div class="form-group">
+                                                                    <label>Title</label>
+                                                                    <input type="text"
+                                                                           value="{{$ride->name}}"
+                                                                           class="form-control sub_category_title"
+                                                                           name="subbranch_name[savedidxku{{$datum->id}}][]"/>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <img class='img-fluid img-thumbnail'
+                                                                         src='{{$ride->getCover()}}'/>
+                                                                    <label for="image">Upload Cover Image ( Resolution
+                                                                        100px
+                                                                        x 100px
+                                                                        )</label>
+                                                                    <input type="file"
+                                                                           class="form-control-file sub_category_cover"
+                                                                           id="cover"
+                                                                           name="subbranch_cover[savedidxku{{$datum->id}}][]"
+                                                                           srcImage="{{$ride->cover}}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Format Type</label>
+                                                                    <select class="form-control format_type"
+                                                                            name="subbranch_type[savedidxku{{$datum->id}}][]"
+                                                                            vindex="savedidxku{{$datum->id}}">
+                                                                        <option value="1"
+                                                                                @if($ride->type==1) selected @endif>
+                                                                            Single Content
+                                                                        </option>
+                                                                        <option value="2"
+                                                                                @if($ride->type==2) selected @endif>
+                                                                            Multiple Content
+                                                                        </option>
+                                                                        <input type="hidden" id="role_value" value="-1">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="subcategory-body">
+                                                                @if($ride->type==1)
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <img class='img-fluid img-thumbnail'
+                                                                                 src='{{$ride->getBanner()}}'/>
+                                                                            <label for="image">Upload Banner Image (
+                                                                                Resolution
+                                                                                100px x 100px
+                                                                                )</label>
+                                                                            <input type="file"
+                                                                                   class="form-control-file sub_category_image"
+                                                                                   id="image"
+                                                                                   name="subbranch_banner[savedidxku{{$datum->id}}][]"
+                                                                                   srcImage="{{$ride->banner}}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="image">Body Content</label>
+                                                                            <textarea id="wsiwygcounter"
+                                                                                      class="sub_category_content wsiwyg"
+                                                                                      name="subbranch_content[savedidxku{{$datum->id}}][]">{{$ride->content}}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                @else
+                                                                    @foreach($ride->getDetail as $detail)
+                                                                        <div class="card">
+                                                                            <div class="card-header">
 
-                            @endforeach
+            <span class='fa fa-fw fa-times fa-pull-right pointer category-close'
+                  category_id="{{$ride->id}}"></span>
+                                                                                <div class="col-md-7">
+                                                                                    <div class="form-group">
+                                                                                        <label>Title</label>
+                                                                                        <input type="text"
+                                                                                               value="{{$detail->name}}"
+                                                                                               class="form-control sub_category_multi_title"
+                                                                                               name="sub_category_multi_title[savedidxku{{$datum->id}}][savedidxmu{{$ride->id}}][]"/>
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <img
+                                                                                            class='img-fluid img-thumbnail'
+                                                                                            src='{{$detail->getImage()}}'/>
+                                                                                        <label for="image">Upload Banner
+                                                                                            Image ( Resolution 100px x
+                                                                                            100px
+                                                                                            )</label>
+                                                                                        <input type="file"
+                                                                                               class="form-control-file sub_category_multi_banner"
+                                                                                               id="image"
+                                                                                               name="sub_category_multi_banner[savedidxku{{$datum->id}}][savedidxmu{{$ride->id}}][]"
+                                                                                               srcImage="{{$detail->image}}">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="image">Body
+                                                                                            Content</label>
+                                                                                        <textarea id="wsiwygcounter"
+                                                                                                  class="sub_category_multi_content wsiwyg"
+                                                                                                  name="sub_category_multi_content[savedidxku{{$datum->id}}][savedidxmu{{$ride->id}}][]">{{$detail->content}}</textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <input type="hidden"
+                                                                                       name="sub_category_multi_id[savedidxku{{$datum->id}}][savedidxmu{{$ride->id}}][]"
+                                                                                       value="{{$detail->id}}">
+                                                                            </div>
+                                                                        </div>
+                                                                    @endforeach
+                                                                @endif
+                                                            </div>
+                                                            <span class="btn btn-info add-subcategory-item m-3"
+                                                                  style="display: none">Add More</span>
+                                                            <input type="hidden"
+                                                                   name="branch_id[savedidxku{{$datum->id}}][]"
+                                                                   class="branch_id"
+                                                                   value="{{$ride->id}}">
+                                                            <input type="hidden"
+                                                                   name="key_id[savedidxku{{$datum->id}}][]"
+                                                                   class="key_id"
+                                                                   value="savedidxmu{{$ride->id}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <span class="btn btn-info category-add">Add Category</span>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <input type="hidden" name="game_center_id" value="{{$id}}">
+                            <input type="hidden" name="game_center_id" value="{{$data->id}}">
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="d-none single-content-clone">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="image">Upload Banner Image ( Resolution 100px x 100px
+                    )</label>
+                <input type="file" class="form-control-file sub_category_image" id="image"
+                       name="subbranch_banner[idxku][]"
+                       srcImage="">
+            </div>
+            <div class="form-group">
+                <label for="image">Body Content</label>
+                <textarea id="wsiwygcounter" class="sub_category_content"
+                          name="subbranch_content[idxku][]"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none multi-content-clone">
+        <div class="card">
+            <div class="card-header">
+
+            <span class='fa fa-fw fa-times fa-pull-right pointer category-close'
+                  category_id="-1"></span>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control sub_category_multi_title"
+                               name="sub_category_multi_title[idxku][idxmu][]"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Upload Banner Image ( Resolution 100px x 100px
+                            )</label>
+                        <input type="file" class="form-control-file sub_category_multi_banner" id="image"
+                               name="sub_category_multi_banner[idxku][idxmu][]"
+                               srcImage="">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Body Content</label>
+                        <textarea id="wsiwygcounter" class="sub_category_multi_content"
+                                  name="sub_category_multi_content[idxku][idxmu][]"></textarea>
+                    </div>
+                </div>
+                <input type="hidden" name="sub_category_multi_id[idxku][idxmu][]" value="-1">
             </div>
         </div>
     </div>
@@ -48,7 +248,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <span class='fa fa-fw fa-times fa-pull-right pointer category-close'></span>
+                    <span class='fa fa-fw fa-times fa-pull-right pointer category-close' category_id="-1"></span>
                     <br>
                     <span class="btn btn-info fa-pull-right sub-category-add">Add Rides</span>
                     <input type="hidden" name="branch_index[]" class="branch_index" value="idxku">
@@ -60,24 +260,92 @@
                     <div class="card-header">
                         <span class='fa fa-fw fa-times fa-pull-right pointer sub-category-close'
                               sub_category_id="-1"></span>
+                        <div class="col-md-11">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control sub_category_title"
+                                           name="subbranch_name[idxku][]"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Upload Cover Image ( Resolution 100px x 100px
+                                        )</label>
+                                    <input type="file" class="form-control-file sub_category_cover" id="cover"
+                                           name="subbranch_cover[idxku][]"
+                                           srcImage="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Format Type</label>
+                                    <select class="form-control format_type" name="subbranch_type[idxku][]"
+                                            vindex="idxku">
+                                        <option value="1" selected>Single Content</option>
+                                        <option value="2">Multiple Content</option>
+                                        <input type="hidden" id="role_value" value="-1">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="subcategory-body">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="image">Upload Banner Image ( Resolution 100px x 100px
+                                            )</label>
+                                        <input type="file" class="form-control-file sub_category_image" id="image"
+                                               name="subbranch_banner[idxku][]"
+                                               srcImage="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Body Content</label>
+                                        <textarea id="wsiwygcounter" class="sub_category_content"
+                                                  name="subbranch_content[idxku][]"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="btn btn-info add-subcategory-item m-3" style="display: none">Add More</span>
+                            <input type="hidden" name="branch_id[idxku][]" class="branch_id"
+                                   value="-1">
+                            <input type="hidden" name="key_id[idxku][]" class="key_id"
+                                   value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-none sub-branch-clone">
+        <div class="card">
+            <div class="card-header">
+                        <span class='fa fa-fw fa-times fa-pull-right pointer sub-category-close'
+                              sub_category_id="-1"></span>
+                <div class="col-md-12">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control sub_category_title"
+                                   name="subbranch_name[idxku][]"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Format Type</label>
+                            <select class="form-control format_type" name="subbranch_type[idxku][]" vindex="idxku">
+                                <option value="1" selected>Single Content</option>
+                                <option value="2">Multiple Content</option>
+                                <input type="hidden" id="role_value" value="-1">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Upload Cover Image ( Resolution 100px x 100px
+                                )</label>
+                            <input type="file" class="form-control-file sub_category_cover" id="cover"
+                                   name="subbranch_cover[idxku][]"
+                                   srcImage="">
+                        </div>
+                    </div>
+                    <div class="subcategory-body">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control sub_category_title"
-                                       name="subbranch_name[idxku][]"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Upload Cover Image ( Resolution 100px x 100px
-                                    )</label>
-                                <input type="file" class="form-control-file sub_category_cover" id="cover"
-                                       name="subbranch_branch[idxku][]"
-                                       srcImage="">
-                            </div>
                             <div class="form-group">
                                 <label for="image">Upload Banner Image ( Resolution 100px x 100px
                                     )</label>
                                 <input type="file" class="form-control-file sub_category_image" id="image"
-                                       name="subbranch_image[idxku][]"
+                                       name="subbranch_banner[idxku][]"
                                        srcImage="">
                             </div>
                             <div class="form-group">
@@ -85,10 +353,13 @@
                                 <textarea id="wsiwygcounter" class="sub_category_content"
                                           name="subbranch_content[idxku][]"></textarea>
                             </div>
-                            <input type="hidden" name="branch_id[idxku][]" class="branch_id"
-                                   value="-1">
                         </div>
                     </div>
+                    <span class="btn btn-info add-subcategory-item m-3" style="display: none">Add More</span>
+                    <input type="hidden" name="branch_id[idxku][]" class="branch_id"
+                           value="-1">
+                    <input type="hidden" name="key_id[idxku][]" class="key_id"
+                           value="">
                 </div>
             </div>
         </div>
@@ -101,14 +372,57 @@
     <script>
         var counter = 0;
         var wsiwygcounter = 0;
+        var rideitem = 0;
         $(document).ready(function () {
-
+            initEditor(".wsiwyg");
+            if ($('.branch-body').children().length == 0) {
+                addMainBranch();
+            }
         });
-        $(document).on("click", ".category-add", function () {
-            $('.branch-body').append($('.main-branch-clone').html().replace(/idxku/g, 'idxku' + counter).replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter));
+
+        function addMainBranch() {
+            var wsiwyg = 'wsiwyg' + wsiwygcounter;
+            $('.branch-body').append($('.main-branch-clone').html().replace(/idxku/g, 'idxku' + counter).replace('wsiwygcounter', wsiwyg));
             counter++;
+            initEditor('#' + wsiwyg);
+            wsiwygcounter++;
+        }
+
+        $(document).on("click", ".category-add", function () {
+            addMainBranch()
+        });
+        $(document).on("click", ".sub-category-add", function () {
+            var indexku = $(this).parent().find('.branch_index').val();
+            var content = $('.sub-branch-clone').html().replace(/idxku/g, indexku).replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter);
+            $(this).parent().parent().parent().find('.sub-branch-body').append(content);
             initEditor('#wsiwyg' + wsiwygcounter);
             wsiwygcounter++;
+        });
+        $(document).on('click', '.add-subcategory-item', function () {
+            $(this).siblings('.subcategory-body').append($('.multi-content-clone').html().replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter).replace(/idxmu/g, $(this).attr('vindex')).replace(/idxku/g, $(this).attr('bindex')));
+            initEditor('#wsiwyg' + wsiwygcounter);
+            wsiwygcounter++;
+
+
+        });
+        $(document).on("change", '.format_type', function () {
+            var body = $(this).parent().parent().siblings('.subcategory-body');
+            body.children().remove();
+            if ($(this).val() == "1") {
+                body.html($('.single-content-clone').html().replace(/idxku/g, $(this).attr('vindex')).replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter));
+                initEditor('#wsiwyg' + wsiwygcounter);
+                wsiwygcounter++;
+                body.siblings('.add-subcategory-item').hide();
+            } else {
+                var idxmu = "idxmu" + rideitem;
+                var bindex = $(this).attr('vindex');
+                body.html($('.multi-content-clone').html().replace(/idxku/g, bindex).replace(/idxmu/g, idxmu).replace('wsiwygcounter', 'wsiwyg' + wsiwygcounter));
+                initEditor('#wsiwyg' + wsiwygcounter);
+                rideitem++;
+                wsiwygcounter++;
+                body.siblings('.key_id').val(idxmu);
+                body.siblings('.add-subcategory-item').attr('vindex', idxmu).attr('bindex', bindex).show();
+            }
         });
 
         function initEditor(pointer) {

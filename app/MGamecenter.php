@@ -24,4 +24,9 @@ class MGamecenter extends Model
     {
         return $this->hasMany(MGamecenterlocation::class, 'game_center_id', 'id')->orderBy('id');
     }
+
+    public function getCategory()
+    {
+        return $this->hasMany(MRidecategory::class, 'game_center_id', 'id')->orderBy('id');
+    }
 }

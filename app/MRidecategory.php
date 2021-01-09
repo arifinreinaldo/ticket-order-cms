@@ -19,4 +19,8 @@ class MRidecategory extends Model
     {
         return ($this->image) ? asset('/storage/' . $this->image) : '/svg/icon.svg';
     }*/
+    public function getRide()
+    {
+        return $this->hasMany(MRideitem::class, 'gcr_category_id', 'id');
+    }
 }

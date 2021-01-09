@@ -172,3 +172,4 @@ Route::post('/mridecategory/destroy', 'MRidecategoryController@webDestroy');
 Route::get('/mridecategory/edit/{id}', 'MRidecategoryController@webEdit');
 Route::post('/mridecategory/toggle', 'MRidecategoryController@webToggle');
 Route::get('/mridecategoryajax', 'MRidecategoryController@ajaxData')->name('mridecategoryajax');
+Route::get('/mrideitem','MRideitemController@webIndex')->name('mrideitem');Route::post('/mrideitem/store','MRideitemController@webStore');Route::get('/mrideitem/create','MRideitemController@webCreate');Route::post('/mrideitem/update','MRideitemController@webUpdate');Route::post('/mrideitem/destroy','MRideitemController@webDestroy');Route::get('/mrideitem/edit/{id}','MRideitemController@webEdit');Route::post('/mrideitem/toggle','MRideitemController@webToggle');Route::get('/mrideitemajax','MRideitemController@ajaxData')->name('mrideitemajax');
