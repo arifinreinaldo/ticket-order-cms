@@ -24,8 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MRidecategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MRidecategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mridecategory_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mridecategory_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
