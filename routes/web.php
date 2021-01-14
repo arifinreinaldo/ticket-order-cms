@@ -115,6 +115,7 @@ Route::group([
     Route::post('/mconfiguration/toggle', 'MConfigurationController@webToggle');
     Route::get('/mconfigurationajax', 'MConfigurationController@ajaxData')->name('mconfigurationajax');
     Route::post('/msmtp/store', 'MConfigurationController@webStoreSmtp');
+    Route::post('/micon/store', 'MConfigurationController@webStoreIcon');
 
 
     Route::get('/mstatic', 'MStaticController@webIndex')->name('mstatic');

@@ -14,5 +14,7 @@ return [
     'game_center_category_banner_image' => 'uploads/game_center/category/banner',
     'game_center_category_item_image' => 'uploads/game_center/category/item',
     'theme_banner_image' => 'uploads/theme',
+    'parameter_image' => 'uploads/parameter',
+    'parameter_icon_value' => 'icon_value',
 ];
 ?>

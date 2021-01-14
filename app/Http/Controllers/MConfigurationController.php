@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Util;
 use App\MConfiguration;
+use App\MParameter;
 use App\MSmtpConfig;
 use DataTables;
 use Exception;
@@ -16,7 +17,8 @@ class MConfigurationController extends Controller
     public function webIndex()
     {
         $data = MSmtpConfig::all()->first();
-        return view('master.mconfiguration', compact('data'));
+        $imageIcon = MParameter::where('name', '=', config('constant.parameter_icon_value'))->first();
+        return view('master.mconfiguration', compact('data', 'imageIcon'));
     }
 
     public function webCreate()
@@ -213,5 +215,27 @@ class MConfigurationController extends Controller
             return redirect("/mconfiguration")->with('failed', 'Failed save data.');
         }
         return redirect("/mconfiguration")->with('success', 'Success save data.');
+    }
+
+    public function webStoreIcon(Request $request)
+    {
+        $data = request()->validate([
+            'icon' => 'image|mimes:jpg,png,jpeg|max:1024',
+        ]);
+
+        try {
+            $oldIcon = MParameter::firstOrNew(['name' => config('constant.parameter_icon_value')]);
+            if ($request['icon']) {
+                $oldIcon->name = config('constant.parameter_icon_value');
+                $imagePath = Util::updateFile($oldIcon->value, request('icon'), 'game_image');
+                $oldIcon->value = $imagePath;
+            }
+            $oldIcon->save();
+        } catch (Exception $e) {
+            dd($e);
+            report($e);
+            return redirect("/mconfiguration")->with('failed', 'Failed insert data.');
+        }
+        return redirect("/mconfiguration")->with('success', 'Success insert data.');
     }
 }

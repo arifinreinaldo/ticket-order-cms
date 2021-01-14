@@ -23,7 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/MParameter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,18 +171,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/image" />
+      <recent name="$PROJECT_DIR$/public/assets/images" />
+      <recent name="$PROJECT_DIR$/" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/resources/views/master" />
       <recent name="$PROJECT_DIR$/public/assets/js" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/resources/views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/image" />
-      <recent name="$PROJECT_DIR$/public/assets/images" />
-      <recent name="$PROJECT_DIR$/" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager">
@@ -302,10 +306,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610088356150" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1610169219259">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1610603248827">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610169219259" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610603248827" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

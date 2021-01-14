@@ -152,6 +152,41 @@
             </div>
         </div>
     </div>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Icon Configuration</h5>
+            </div>
+            <div class="card-block table-border-style">
+                <form method="POST" action="{{url('/micon/store')}}" enctype="multipart/form-data" id="formParameter">
+                    @csrf
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @if(!empty($imageIcon))
+                                <img class='img-fluid img-thumbnail' src='{{$imageIcon->getImage()}}'
+                            @endif
+                            <label for="image">Upload Main Icon Image ( Resolution 100px x 100px )</label>
+                            @if(!empty($imageIcon))
+                                <input type="file" class="form-control-file" id="gcImage" name="icon"
+                                       srcImage="{{$imageIcon->image}}">
+                            @else
+                                <input type="file" class="form-control-file" id="gcImage" name="icon" srcImage="">
+                            @endif
+
+                        </div>
+                        @if($update=='X')
+                            <div class="form-group">
+                                <button type="submit" id="confirmParameter" class="btn btn-primary">Submit</button>
+                            </div>
+                        @endif
+                        @if (!empty($data))
+                            <input type="hidden" name="id" value="{{$data->id}}">
+                        @endif
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <form action="" method="post" id="actionForm">
         @csrf
         <input type="hidden" name="userid" id="userid_param">
@@ -225,6 +260,14 @@
         });
         $(document).on("click", "#confirmButtonModal", function () {
             $('#actionForm').submit();
+        });
+        $(document).on("click", "#confirmParameter", function (e) {
+            e.preventDefault();
+            if ($('#gcImage').get(0).files.length == 0 && $('#gcImage').attr('srcImage') == "") {
+                showMessage("Icon is required");
+            } else {
+                $('#formParameter').submit();
+            }
         });
     </script>
 @endsection
