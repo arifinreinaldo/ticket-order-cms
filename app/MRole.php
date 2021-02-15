@@ -7,7 +7,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class MRole extends Model
 {
-    //use LogsActivity;
+    use LogsActivity;
 
     protected $table = 'user_role';
     protected $guarded = ['id'];
