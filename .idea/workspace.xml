@@ -23,12 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a13af32-6d2e-48fb-8cd9-456f355ba6ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/MParameter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MConfigurationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/mconfiguration.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MRole.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,6 +235,7 @@
       <workItem from="1609919109003" duration="327000" />
       <workItem from="1610078596468" duration="2760000" />
       <workItem from="1610160429185" duration="603000" />
+      <workItem from="1613361263237" duration="16000" />
     </task>
     <servers />
   </component>
@@ -306,10 +303,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="538" y="291" width="933" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610088356150" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1610603248827">
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1613361272849">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1610603248827" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1613361272849" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
